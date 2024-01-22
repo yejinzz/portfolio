@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 100;
+  src: url('/public/fonts/Pretendard-Thin.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: normal;
+  src: url('/public/fonts/Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  src: url('/public/fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+:root {
+  /* const windowSize = {
+    'mb-xs': 'max-width: 300px',
+    'mb-s': 'max-width: 375px',
+    'mb-m': 'max-width: 480px',
+    'mb-l': 'max-width: 768px',
+    'lt-s': 'max-width: 1024px',
+    'lt-m': 'max-width: 1200px',
+    'lt-l': 'max-width: 1440px',
+  }; */
+
+  /* window size */
+  --window-mb-l: 'max-width: 768px';
+  --window-mb-m: 'max-width: 480px';
+  --window-mb-s: 'max-width: 375px';
+
+  /* font size */
+  --font-xs: '1.2rem';
+  --font-sm: '1.4rem';
+  --font-rg: '1.6rem';
+  --font-md: '1.8rem';
+  --font-lg: '2rem';
+  /* 
+    head: {
+      xs: '2.4rem',
+      sm: '2.8rem',
+      rg: '3.2rem',
+      md: '3.6rem',
+      lg: '4.2rem',
+      xl: '4.8rem',
+      ul: '5.6rem',
+    },
+  }; */
+
+  /* const color = {
+    header: 'rgba(0,0,0,0.24)',
+    main: '#222',
+    secondBg: '#1D1D1D',
+    point: '#0ACDCE',
+    point80: '#0ACDCE80',
+    point40: '#0ACDCE40',
+    text_head: '#fff',
+    text: '#fffffff0',
+    text_2: '#ffffffca',
+    text_3: '#ddd',
+    text_4: '#ccc',
+    text_5: '#888',
+    text_6: '#666',
+  }; */
+}
