@@ -1,9 +1,14 @@
 import './App.css';
+import Home from './pages/Home';
+import About from './pages/About';
+import Project from './pages/Project';
 
 function App() {
   return (
     <>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <Home />
+      <About />
+      <Project />
     </>
   );
 }
