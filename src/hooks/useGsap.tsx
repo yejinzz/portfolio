@@ -45,6 +45,34 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
   }, []);
 };
 
+export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
+  useGSAP(() => {
+    // console.log(items);
+
+    gsap.fromTo(
+      items.current,
+      {
+        y: 100,
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        // delay: 1,
+        ease: 'circ.out',
+        stagger: {
+          amount: 1,
+          from: 'random',
+        },
+        scrollTrigger: {
+          trigger: items.current,
+        },
+      }
+    );
+  }, []);
+};
+
 export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
   useGSAP(() => {
     // const el = items.map((item) => item.current);
