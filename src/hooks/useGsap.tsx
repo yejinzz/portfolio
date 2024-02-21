@@ -1,5 +1,5 @@
 import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import gsap, { Expo } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RefObject } from 'react';
 
@@ -65,5 +65,55 @@ export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: nu
         stagger: 0.8,
       }
     );
+  }, []);
+};
+
+export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
+  useGSAP(() => {
+    gsap.fromTo(
+      items.current,
+      {
+        x: '30%',
+        autoAlpha: 0,
+      },
+      {
+        x: 0,
+        autoAlpha: 1,
+        duration: 1,
+        delay,
+        ease: Expo.easeInOut,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: items.current,
+          start: 'top center',
+          // end: 'bottom bottom',
+          // markers: true,
+          toggleActions: 'play none play reverse',
+        },
+      }
+    );
+  }, []);
+};
+export const useGsapAboutCircle = (trigger: RefObject<HTMLElement>) => {
+  useGSAP(() => {
+    const el: SVGPathElement | null = document.querySelector('#path_line') as SVGPathElement | null;
+
+    if (el) {
+      const length = el.getTotalLength();
+      el.style.strokeDasharray = length.toString();
+      el.style.strokeDashoffset = length.toString();
+
+      gsap.to('#path_line', {
+        strokeDashoffset: 0,
+        duration: 1,
+        delay: 1,
+        scrollTrigger: {
+          trigger: trigger.current,
+          start: 'top 10%',
+          end: 'bottom bottom',
+          toggleActions: 'play none play reverse',
+        },
+      });
+    }
   }, []);
 };
