@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 const Section = styled.section`
   position: relative;
-  width: 100vw;
+  /* max-width: 100vw; */
   min-height: 100vh;
-  /* max-height: 100vh; */
-  padding: 5rem;
+  padding: 4rem;
+  /* max-width: ${({ theme }) => theme.maxWidth}; */
+  margin: 0 auto;
+  transition: padding 0.3s;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   overflow: hidden;
 `;

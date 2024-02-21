@@ -20,6 +20,9 @@
   --font-rg: '1.6rem';
   --font-md: '1.8rem';
   --font-lg: '2rem';
+
+  --color-main: #1a1a1a;
+  --color-main-text: #cacaca;
   /* 
     head: {
       xs: '2.4rem',
