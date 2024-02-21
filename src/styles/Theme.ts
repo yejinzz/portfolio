@@ -14,21 +14,26 @@ const fontSize = {
   md: '1rem', // 16px
   lg: '1.125rem', // 18px
   xl: '1.25rem', // 20px
-  title: '2.25rem', // 36px
+  hero: '7rem',
+  title: '3rem', // 36px
   subTitle: '1.5rem', // 24px
 };
-
+const shadow = {
+  text: '-0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff,-0.5px 0.5px 0 #fff,0.5px 0.5px 0 #fff',
+};
 const maxWidth = '1200px';
 
 const padding = '3.2rem';
 
 const color = {
+  mainBg: '#222',
   header: 'rgba(0,0,0,0.24)',
-  main: '#222',
+  title: '#88888837',
   secondBg: '#1D1D1D',
-  point: '#0ACDCE',
-  point80: '#0ACDCE80',
-  point40: '#0ACDCE40',
+
+  point: '#bda249',
+  point80: '#bda24980',
+  point40: '#bda24940',
   text_head: '#fff',
   text: '#fffffff0',
   text_2: '#ffffffca',
@@ -44,6 +49,7 @@ const theme = {
   padding,
   maxWidth,
   fontSize,
+  shadow,
 };
 
 export default theme;
