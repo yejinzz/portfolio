@@ -1,124 +1,125 @@
-import styled, { css, keyframes } from 'styled-components';
-import ScrollDown from '../components/common/ScrollDown';
-// import Background from '../components/common/Background';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import styled from 'styled-components';
+import ScrollDown from '../components/home/ScrollDown';
 import { Section } from '../styles/CommonStyle';
-import HomeBackground from '../components/common/HomeBackground';
+import TextCircle from '../components/home/TextCircle';
+import useArrayRef from '../hooks/useArrayRef';
+import { useGsapHeadLineReveal } from '../hooks/useGsap';
 
 const Home = () => {
-  const { ref, isInViewport } = useScrollAnimation();
+  const [headLineRef, setHeadLineRef] = useArrayRef<HTMLHeadingElement | HTMLParagraphElement>();
+
+  useGsapHeadLineReveal(headLineRef);
 
   return (
-    <Section>
-      <HomeBackground />
+    <HomeSection id="home">
       <HomeContent>
-        <MovingText ref={ref} isInViewport={isInViewport}>
-          <div className="Home__content-title1">
-            <h1>YEJIN</h1>
-          </div>
-          <div className="Home__content-title2">
-            <h1>PORTFOLIO</h1>
-          </div>
-          <div className="Home__content-sub">
-            <p>Web Developer Portfolio</p>
-          </div>
-        </MovingText>
+        <TextCircle>FRONT-END DEVELOPER </TextCircle>
+        <HeadLine>
+          <h1 ref={setHeadLineRef} className="HeadLine-one">
+            Yejin
+          </h1>
+        </HeadLine>
+        <HeadLine>
+          <h1 ref={setHeadLineRef} className="HeadLine-two">
+            Portfolio
+          </h1>
+        </HeadLine>
       </HomeContent>
+
+      {/* <CircleOne />
+      <CircleTwo /> */}
       <ScrollDown />
-    </Section>
+    </HomeSection>
   );
 };
 
 export default Home;
 
+const HomeSection = styled(Section)`
+  /* overflow: hidden; */
+  /* height: 100%; */
+
+  .About_path {
+    position: absolute;
+    left: 0;
+
+    /* left: -1rem; */
+  }
+
+  #path_line {
+    width: 100vw;
+    stroke: ${({ theme }) => theme.color.point};
+  }
+`;
+
+const HeadLine = styled.div`
+  /* position: relative; */
+  overflow: hidden;
+  .HeadLine-two {
+    /* -webkit-text-stroke: 1px var(--color-main-text); */
+    text-shadow: ${({ theme }) => theme.shadow.text};
+    color: ${({ theme }) => theme.color.mainBg};
+    /* color: transparent; */
+  }
+  & > h1 {
+    font-size: 8rem;
+    font-family: 'Cabinet', 'sans-serif';
+    /* color: ${({ theme }) => theme.color.point}; */
+    /* -webkit-text-stroke: 1px var(--color-main-text);
+    color: transparent; */
+    /* text-transform: uppercase; */
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      font-size: 5rem;
+    }
+  }
+
+  & > p {
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 100;
+    /* font-size: 2rem; */
+    letter-spacing: 1rem;
+    color: #8888886b;
+  }
+`;
 const HomeContent = styled.div`
   position: relative;
+  /* top: 0; */
   display: flex;
-  align-items: center;
-`;
-
-const TextAnimation = keyframes`
-  100% {
-    transform: translateY(0);
-  }
-`;
-
-const MovingText = styled.article<{ isInViewport: boolean }>`
-  /* border: 1px solid red; */
-  display: grid;
-  gap: 0.5rem;
-  z-index: 3;
-  > div {
-    width: 100%;
-    overflow: hidden;
-    & > h1 {
-      font-size: 10rem;
-      font-weight: 900;
-      letter-spacing: 1rem;
-      transition:
-        font-size 0.3s,
-        letter-spacing 0.3s;
-    }
-  }
-  .Home__content-title1 > h1 {
-    transform: translateY(200px);
-    animation: ${({ isInViewport }) =>
-      isInViewport &&
-      css`
-        ${TextAnimation} 1.5s forwards 0s
-      `};
-  }
-
-  .Home__content-title2 > h1 {
-    transform: translateY(200px);
-    animation: ${({ isInViewport }) =>
-      isInViewport &&
-      css`
-        ${TextAnimation} 1.5s forwards 0.5s
-      `};
-  }
-
-  .Home__content-sub {
-    font-family: 'Montserrat', sans-serif;
-    height: 50px;
-    font-size: 2rem;
-    opacity: 0.6;
-  }
-  .Home__content-sub > p {
-    letter-spacing: 1px;
-    transform: translateY(100px);
-    animation: ${({ isInViewport }) =>
-      isInViewport &&
-      css`
-        ${TextAnimation} 1.5s forwards 1s
-      `};
-  }
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 1rem;
 
   @media (max-width: 768px) {
-    > div {
-      & > h1 {
-        font-size: 6rem;
-      }
-    }
-
-    .Home__content-sub {
-      font-size: 14px;
-    }
   }
+`;
 
-  @media (max-width: 480px) {
-    > div {
-      & > h1 {
-        font-size: 3rem;
-      }
-    }
-    .Home__content-title2 {
-      margin-top: 15px;
-      font-size: 2.5rem;
-    }
-    .Home__content-sub {
-      margin-top: 10px;
-      font-size: 14px;
-    }
-  }
+const CircleOne = styled.div`
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  /* right: 20%; */
+  /* transform: translate(-50%, -50%); */
+  width: 20rem;
+  height: 20rem;
+  background-color: ${({ theme }) => theme.color.point};
+  border-radius: 50%;
+`;
+
+const CircleTwo = styled.div`
+  position: absolute;
+  /* bottom: -40%;
+  right: -20%; */
+  top: 20%;
+  right: 20%;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 `;

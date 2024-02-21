@@ -44,3 +44,26 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
       });
   }, []);
 };
+
+export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
+  useGSAP(() => {
+    // const el = items.map((item) => item.current);
+    console.log(items);
+
+    tl.fromTo(
+      items.current,
+      {
+        autoAlpha: 0,
+        y: 100,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 2,
+        delay,
+        ease: 'power4.out',
+        stagger: 0.8,
+      }
+    );
+  }, []);
+};
