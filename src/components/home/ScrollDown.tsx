@@ -1,12 +1,11 @@
-import styled, { keyframes } from "styled-components";
-import { BsMouse } from "react-icons/bs";
-import { MdKeyboardDoubleArrowDown } from "react-icons/md";
-
+import styled, { keyframes } from 'styled-components';
+import MouseIcon from '/public/image/svg/mouse_icon.svg?react';
+import DoubleArrowDown from '/public/image/svg/arrow_down.svg?react';
 const ScrollDown = () => {
   return (
     <ScrollIconWrapper>
-      <BsMouse className="mouse-icon" />
-      <MdKeyboardDoubleArrowDown className="arrow-icon" />
+      <MouseIcon className="mouse-icon" />
+      <DoubleArrowDown className="arrow-icon" />
     </ScrollIconWrapper>
   );
 };
@@ -35,13 +34,15 @@ const ScrollIconWrapper = styled.div`
   .mouse-icon {
     transform: translateY(-20px);
     opacity: 0;
-    font-size: 2.5rem;
+    width: 1.4rem;
+    height: 1.4rem;
     animation: ${MovingScroll} 2s infinite 2s;
   }
   .arrow-icon {
-    margin-top: 5px;
-    font-size: 2rem;
-    color: #666;
+    margin: 0.8rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    font-size: ${({ theme }) => theme.fontSize.xl};
     opacity: 0;
     animation: ${FadeInIcon} 2s infinite 2s;
   }
