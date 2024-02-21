@@ -145,3 +145,95 @@ export const useGsapAboutCircle = (trigger: RefObject<HTMLElement>) => {
     }
   }, []);
 };
+
+export const useGsapBackGroundCircle = (items: RefObject<HTMLDivElement[]>, delay: number = 0) => {
+  useGSAP(() => {
+    // const el = items.map((item) => item.current);
+    tl.fromTo(
+      items.current,
+      { autoAlpha: 0, scale: 0 },
+      {
+        autoAlpha: 0.8,
+        scale: 1,
+        duration: 1,
+        delay,
+        ease: 'power4.out',
+        stagger: 0.5,
+      }
+    );
+  }, []);
+};
+
+export const useGsapNavReveal = (items: RefObject<HTMLLIElement[]>, delay: number = 0) => {
+  useGSAP(() => {
+    console.log(items);
+
+    // const el = items.map((item) => item.current);
+    gsap.fromTo(
+      items.current,
+      { autoAlpha: 0, y: 50 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 2,
+        delay,
+        ease: 'power4.out',
+        stagger: 0.2,
+      }
+    );
+  }, []);
+};
+
+export const useGsapSocialReveal = (el: RefObject<HTMLElement>, delay: number = 0) => {
+  useGSAP(() => {
+    gsap.fromTo(
+      el.current,
+      {
+        x: -500,
+      },
+      {
+        x: 0,
+        duration: 1,
+        delay,
+        ease: 'power4.out',
+      }
+    );
+  }, []);
+};
+
+export const useGsapProjectReveal = (
+  left: RefObject<HTMLElement>,
+  right: RefObject<HTMLElement>,
+  trigger: RefObject<HTMLElement>
+) => {
+  useGSAP(() => {
+    console.log(left, right, trigger);
+
+    const tlProject = gsap.timeline({
+      scrollTrigger: {
+        trigger: trigger.current,
+        start: 'top bottom',
+        end: 'bottom center',
+        toggleActions: 'play none play reverse',
+      },
+    });
+
+    tlProject
+      .from(left.current, {
+        autoAlpha: 0,
+        x: -1000,
+        duration: 2,
+        ease: 'power4.out',
+      })
+      .from(
+        right.current,
+        {
+          autoAlpha: 0,
+          x: 1000,
+          duration: 2,
+          ease: 'power4.out',
+        },
+        0.1
+      );
+  }, []);
+};
