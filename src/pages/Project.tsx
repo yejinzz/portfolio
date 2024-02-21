@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SectionTitle from '../components/common/SectionTitle';
 import { ProjectData } from '../data/projectData';
 import ProjectItem from '../components/project/ProjectItem';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import ProjectModal from '../components/project/modal/ProjectModal';
 // import { projectDetailData } from '../data/projectDetailData';
 // import { projectDataProps } from '../types/types';
@@ -12,11 +12,18 @@ const Project = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [projectId, setProjectId] = useState<number>(0);
 
-  const onClickMoreView = (id: number) => {
-    setIsOpenModal(true);
-    setProjectId(id);
-  };
+  // const onClickMoreView = (id: number) => {
+  //   setOpenModal(true);
+  //   setProjectId(id);
+  // };
 
+  const onClickMoreView = useCallback(
+    (id: number) => {
+      setIsOpenModal(true);
+      setProjectId(id);
+    },
+    [setIsOpenModal, setProjectId]
+  );
   console.log(isOpenModal, projectId);
   return (
     <>

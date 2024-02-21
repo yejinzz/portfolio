@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { projectDataProps } from '../../types/types';
 import { useGsapProjectReveal } from '../../hooks/useGsap';
-import { RefObject, useRef } from 'react';
+import { RefObject, memo, useRef } from 'react';
 import Button from './Button';
 import StackList from '../common/StackList';
 // import ProjectSlider from './ProjectSlider';
@@ -11,11 +11,12 @@ interface ProjectListItemProps {
   onClickMoreView: (id: number) => void;
 }
 
-const ProjectItem = ({ data, onClickMoreView }: ProjectListItemProps) => {
+const ProjectItem = memo(({ data, onClickMoreView }: ProjectListItemProps) => {
   const projectRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectLeftRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectRightRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   useGsapProjectReveal(projectLeftRef, projectRightRef, projectRef);
+  console.log('리렌더링');
   return (
     <ProjectItemContainer ref={projectRef}>
       <div ref={projectLeftRef}>
@@ -37,7 +38,7 @@ const ProjectItem = ({ data, onClickMoreView }: ProjectListItemProps) => {
       </ProjectDescBox>
     </ProjectItemContainer>
   );
-};
+});
 
 export default ProjectItem;
 
