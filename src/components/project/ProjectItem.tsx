@@ -2,17 +2,19 @@ import styled from 'styled-components';
 import { projectDataProps } from '../../types/types';
 import { useGsapProjectReveal } from '../../hooks/useGsap';
 import { RefObject, useRef } from 'react';
+import Button from './Button';
+import StackList from '../common/StackList';
 // import ProjectSlider from './ProjectSlider';
 
-// interface ProjectListItemProps {
-//   data: projectDataProps;
-// }
+interface ProjectListItemProps {
+  data: projectDataProps;
+  onClickMoreView: (id: number) => void;
+}
 
-const ProjectItem = ({ data }: { data: projectDataProps }) => {
+const ProjectItem = ({ data, onClickMoreView }: ProjectListItemProps) => {
   const projectRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectLeftRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectRightRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-
   useGsapProjectReveal(projectLeftRef, projectRightRef, projectRef);
   return (
     <ProjectItemContainer ref={projectRef}>
@@ -24,15 +26,15 @@ const ProjectItem = ({ data }: { data: projectDataProps }) => {
         <h2>{data.name}</h2>
         <p>{data.period}</p>
         <p>{data.subTitle}</p>
-
-        <TagBox>
+        <StackList stackData={data.stack} />
+        {/* <TagBox>
           {data.stack.map((item, idx) => (
             <Tag key={idx}>{item}</Tag>
           ))}
-        </TagBox>
-        <Btn>more view</Btn>
+        </TagBox> */}
+        <Button dataId={data.id} onClickMoreView={onClickMoreView} />
+        {/* <Btn onClick={() => onClickMoreView(data.id)}>more view</Btn> */}
       </ProjectDescBox>
-      {/* <ProjectSlider slide={data.imgUrl} /> */}
     </ProjectItemContainer>
   );
 };
@@ -88,22 +90,33 @@ const ProjectDescBox = styled.div`
   }
 `;
 
-const TagBox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
+// const TagBox = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 0.5rem;
+// `;
 
-const Tag = styled.span`
-  padding: 0.5rem 1rem;
-  border: 0.5px solid #6b6b6b;
-  border-radius: 20px;
-`;
+// const Tag = styled.span`
+//   padding: 0.5rem 1rem;
+//   border: 0.5px solid #6b6b6b;
+//   border-radius: 20px;
+// `;
 
-const Btn = styled.button`
-  width: fit-content;
-  border-bottom: 0.5px solid #6b6b6b;
-  background-color: transparent;
-  /* border-radius: 20px; */
-`;
+// const Btn = styled.button`
+//   width: fit-content;
+//   border-bottom: 0.5px solid #6b6b6b;
+//   background-color: transparent;
+//   /* border-radius: 20px; */
+// `;
+
+// const Button = ({ data, onClickMoreView }: ProjectListItemProps) => {
+//   return <Btn onClick={() => onClickMoreView(data.id)}>more view</Btn>;
+// };
+
+// const Btn = styled.button`
+//   width: fit-content;
+//   border-bottom: 0.5px solid #6b6b6b;
+//   background-color: transparent;
+//   /* border-radius: 20px; */
+// `;

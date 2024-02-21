@@ -3,17 +3,39 @@ import styled from 'styled-components';
 import SectionTitle from '../components/common/SectionTitle';
 import { ProjectData } from '../data/projectData';
 import ProjectItem from '../components/project/ProjectItem';
+import { useState } from 'react';
+import ProjectModal from '../components/project/modal/ProjectModal';
+// import { projectDetailData } from '../data/projectDetailData';
+// import { projectDataProps } from '../types/types';
 
 const Project = () => {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [projectId, setProjectId] = useState<number>(0);
+
+  const onClickMoreView = (id: number) => {
+    setIsOpenModal(true);
+    setProjectId(id);
+  };
+
+  console.log(isOpenModal, projectId);
   return (
-    <Section>
-      <SectionTitle>Project</SectionTitle>
-      <ProjectWrapper>
-        {ProjectData.map((data, idx) => (
-          <ProjectItem key={idx} data={data} />
-        ))}
-      </ProjectWrapper>
-    </Section>
+    <>
+      {isOpenModal &&
+        ProjectData.map((detail, idx) => {
+          return detail.id === projectId && <ProjectModal key={idx} detail={detail} setIsOpenModal={setIsOpenModal} />;
+        })}
+      <Section>
+        <SectionTitle>Projects</SectionTitle>
+        <ProjectWrapper>
+          {ProjectData.map((data, idx) => (
+            <div key={idx}>
+              <ProjectItem data={data} onClickMoreView={onClickMoreView} />
+              {/* <Button dataId={data.id} onClickMoreView={onClickMoreView} /> */}
+            </div>
+          ))}
+        </ProjectWrapper>
+      </Section>
+    </>
   );
 };
 
