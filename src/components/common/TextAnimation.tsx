@@ -1,25 +1,24 @@
 import styled, { keyframes } from 'styled-components';
 import tw from 'twin.macro';
 
-const TitleAnimation = ({ children }: { children: string }) => {
+const TextAnimation = ({ children }: { children: string }) => {
   return (
-    <TitleContainer>
+    <TextContainer>
       {children.split('').map((el, idx) => (
         <span key={el + idx}>{el}</span>
       ))}
-    </TitleContainer>
+    </TextContainer>
   );
 };
 
-export default TitleAnimation;
+export default TextAnimation;
 
-const TitleWordAnimation = keyframes`
-  /* @keyframes titleWordAni { */
+const TextWordAnimation = keyframes`
         0% {
           top: 0;
         }
         20% {
-          top: -0.4rem;
+          top: -0.6rem;
         }
         40% {
           top: 0;
@@ -36,28 +35,19 @@ const TitleWordAnimation = keyframes`
       
 `;
 
-const TitleContainer = styled.div`
+const TextContainer = styled.div`
   ${tw`
     text-[3rem]
     font-bold
     uppercase
   `}
-  /* font-weight: bold;
-  font-family: 'Poppins', 'sans-serif';
-  font-size: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-  background-color: #bda249;
-  width: 100px;
-  height: 100px; */
-  /* text-transform: uppercase; */
   & > span {
-    position: relative;
-    animation: ${TitleWordAnimation} 3s infinite;
-    /* color: #d2d2d2; */
+    ${tw`
+    relative
+  `}
+    animation: ${TextWordAnimation} 3s infinite;
     &:nth-of-type(1) {
       animation-delay: 0.3s;
-      /* color: #ffffff; */
     }
     &:nth-of-type(2) {
       animation-delay: 0.6s;
