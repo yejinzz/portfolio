@@ -3,16 +3,16 @@ import DropDownCloseArrow from '/public/image/svg/icon/close_arrow.svg?react';
 import DropDownOpenArrow from '/public/image/svg/icon/open_arrow.svg?react';
 import styled, { css, keyframes } from 'styled-components';
 
-interface type {
+interface PContribProps {
   contrib: {
     title: string;
     description: string;
   };
 }
 
-const ContribDropdown = ({ contrib }: type) => {
+const ContribDropdown = ({ contrib }: PContribProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [visibilityAnimation, setVisibilityAnimation] = useState(false);
+  // const [visibilityAnimation, setVisibilityAnimation] = useState(false);
   useEffect(() => {
     if (open) {
       setOpen(true);

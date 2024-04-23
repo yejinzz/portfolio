@@ -1,19 +1,14 @@
 import styled from 'styled-components';
 import { projectDataProps } from '../../types/types';
 import { useGsapProjectReveal } from '../../hooks/useGsap';
-import { RefObject, memo, useCallback, useRef, useState } from 'react';
+import { RefObject, useCallback, useRef, useState } from 'react';
 import MoreViewBtn from './button/MoreViewBtn';
 import StackList from '../common/StackList';
 import tw from 'twin.macro';
 import ProjectModal from './modal/ProjectModal';
 import { ProjectData } from '../../data/projectData';
 
-interface ProjectListItemProps {
-  data: projectDataProps;
-  // onClickMoreView: (id: number) => void;
-}
-
-const ProjectItem = memo(({ data }: ProjectListItemProps) => {
+const ProjectItem = ({ data }: { data: projectDataProps }) => {
   const [projectId, setProjectId] = useState<number>(0);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
@@ -53,7 +48,7 @@ const ProjectItem = memo(({ data }: ProjectListItemProps) => {
       </ProjectItemContainer>
     </>
   );
-});
+};
 
 export default ProjectItem;
 

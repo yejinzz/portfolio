@@ -1,10 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-interface StackListProps {
-  stackData: string[];
-}
-const StackList = ({ stackData }: StackListProps) => {
+
+const StackList = ({ stackData }: { stackData: string[] }) => {
   return (
     <StackListContainer>
       {stackData.map((item, idx) => (
