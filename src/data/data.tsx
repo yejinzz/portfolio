@@ -1,6 +1,6 @@
-import GithubIcon from '/public/image/svg/github.svg?react';
-import VelogIcon from '/public/image/svg/velog.svg?react';
-import EmailIcon from '/public/image/svg/email.svg?react';
+import GithubIcon from '/public/image/svg/icon/github.svg?react';
+import VelogIcon from '/public/image/svg/icon/velog.svg?react';
+import EmailIcon from '/public/image/svg/icon/email.svg?react';
 
 export const myInfo = [
   { name: 'Github', link: 'https://github.com/yejinzz', icon: <GithubIcon /> },

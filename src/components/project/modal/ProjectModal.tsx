@@ -6,9 +6,9 @@ import StackList from '../../common/StackList';
 import tw from 'twin.macro';
 import { ThumbUrlProp } from '../../../types/styleTypes';
 import ProjectDetailBox from './ProjectDetailBox';
-import CloseIcon from '/public/image/svg/close.svg?react';
-import GithubIcon from '/public/image/svg/github.svg?react';
-import LinkIcon from '/public/image/svg/link.svg?react';
+import CloseIcon from '/public/image/svg/icon/close.svg?react';
+import GithubIcon from '/public/image/svg/icon/github.svg?react';
+import LinkIcon from '/public/image/svg/icon/link.svg?react';
 import LinkButton from '../../common/LinkButton';
 
 interface ProjectModalProps {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import DropDownCloseArrow from '/public/image/svg/close_arrow.svg?react';
-import DropDownOpenArrow from '/public/image/svg/open_arrow.svg?react';
+import DropDownCloseArrow from '/public/image/svg/icon/close_arrow.svg?react';
+import DropDownOpenArrow from '/public/image/svg/icon/open_arrow.svg?react';
 import styled, { css, keyframes } from 'styled-components';
 
 interface type {
