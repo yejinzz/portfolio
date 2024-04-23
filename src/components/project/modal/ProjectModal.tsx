@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import StackList from '../../common/StackList';
 import tw from 'twin.macro';
 import { ThumbUrlProp } from '../../../types/styleTypes';
-import ProjectDetail from './ProjectDetail';
+import ProjectDetailBox from './ProjectDetailBox';
 import CloseIcon from '/public/image/svg/close.svg?react';
 import GithubIcon from '/public/image/svg/github.svg?react';
 import LinkIcon from '/public/image/svg/link.svg?react';
@@ -56,18 +56,18 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
               </div>
 
               <Details>
-                <ProjectDetail title="Overview">
+                <ProjectDetailBox title="Overview">
                   <Overview>{detail.overview}</Overview>
-                </ProjectDetail>
-                <ProjectDetail title="Contribution">
+                </ProjectDetailBox>
+                <ProjectDetailBox title="Contribution">
                   <ContribList>
                     {detail.contribs.map((contrib, idx) => {
                       return <li key={idx}>{contrib}</li>;
                     })}
                   </ContribList>
-                </ProjectDetail>
+                </ProjectDetailBox>
 
-                <ProjectDetail title="구현 화면">
+                <ProjectDetailBox title="구현 화면">
                   <ScreenList>
                     {detail.screen.map((screen, idx) => {
                       return (
@@ -80,7 +80,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                       );
                     })}
                   </ScreenList>
-                </ProjectDetail>
+                </ProjectDetailBox>
               </Details>
             </ContentWrap>
           </ModalContainer>
@@ -126,7 +126,6 @@ const ContentWrap = styled.article<ThumbUrlProp>`
       left-0
       z-[-1]
       opacity-20
-      // bg-gradient-to-b from-[#565656] to-transparent
     `}
     background-image:${({ thumbUrl }) =>
       `linear-gradient(
@@ -155,7 +154,6 @@ const ProjectInfo = styled.div`
     items-center
     gap-4
     pb-12
-    // px-40
     font-thin
   `}
 
@@ -257,19 +255,20 @@ const ThumbContainer = styled.div`
 `;
 
 const ModalBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(4px);
-  background-color: #000000ac;
-  z-index: -1;
+  ${tw` 
+      fixed
+      top-0
+      left-0
+      w-full
+      h-full
+      backdrop-blur-[4px]
+      bg-[#000000ac]
+      z-0
+    `}
 `;
 const ProjectLinks = styled.div`
   ${tw` 
     flex
-    // items-center
     gap-5
   `}
 `;
