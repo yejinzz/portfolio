@@ -1,9 +1,6 @@
 import React from 'react';
-import { Section as ContactSection } from '../styles/CommonStyle';
-import TitleAnimation from '../components/common/TitleAnimation';
-// import GithubIcon from '/public/image/svg/github.svg?react';
-// import VelogIcon from '/public/image/svg/velog.svg?react';
-// import EmailIcon from '/public/image/svg/email.svg?react';
+import { Section } from '../styles/CommonStyle';
+import TextAnimation from '../components/common/TextAnimation';
 import { myInfo } from '../data/data';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -12,7 +9,7 @@ import LinkButton from '../components/common/LinkButton';
 const Contact = ({ LastRef }: { LastRef: React.ForwardedRef<HTMLElement> }) => {
   return (
     <ContactSection className="h-screen flex flex-col justify-center items-center" ref={LastRef}>
-      <TitleAnimation>Thank you!</TitleAnimation>
+      <TextAnimation>Thank you!</TextAnimation>
 
       <ContactList>
         {myInfo.map((info, idx) => (
@@ -28,6 +25,15 @@ const Contact = ({ LastRef }: { LastRef: React.ForwardedRef<HTMLElement> }) => {
 };
 
 export default Contact;
+const ContactSection = styled(Section)`
+  ${tw`
+    flex
+    flex-col
+    justify-center
+    items-center
+    h-screen
+  `}
+`;
 
 const ContactList = styled.ul`
   ${tw`

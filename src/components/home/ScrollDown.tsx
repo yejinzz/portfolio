@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import MouseIcon from '/public/image/svg/mouse_icon.svg?react';
 import DoubleArrowDown from '/public/image/svg/arrow_down.svg?react';
 import tw from 'twin.macro';
+
 const ScrollDown = () => {
   return (
     <ScrollIconWrapper>

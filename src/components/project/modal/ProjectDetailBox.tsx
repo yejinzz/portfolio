@@ -7,7 +7,7 @@ interface PContentProps extends ChildrenProps {
   title: string;
 }
 
-const ProjectDetail = ({ children, title }: PContentProps) => {
+const ProjectDetailBox = ({ children, title }: PContentProps) => {
   return (
     <Detailbox>
       <SubTitle>{title}</SubTitle>
@@ -16,7 +16,7 @@ const ProjectDetail = ({ children, title }: PContentProps) => {
   );
 };
 
-export default ProjectDetail;
+export default ProjectDetailBox;
 
 const Detailbox = styled.div`
   & > h2 {

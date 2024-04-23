@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
-// import GithubIcon from '/public/image/svg/github.svg?react';
-// import LinkIcon from '/public/image/svg/link.svg?react';
 
 interface LinkButtonProps {
   children: React.ReactNode;

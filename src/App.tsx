@@ -12,6 +12,7 @@ import tw from 'twin.macro';
 import Education from './pages/Education';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 const Noise = styled.div`
   ${tw`
@@ -29,14 +30,8 @@ const Noise = styled.div`
 `}
 `;
 const App = () => {
-  // useSmoothScroll();
-  // useEffect(() => {
-  //   const pushRefresh = () => {
-  //     window.scrollTo(0, 0);
-  //   };
-  //   window.onbeforeunload = pushRefresh;
-  // }, []);
   const { isInViewport, firstRef, LastRef } = useScrollAnimation();
+
   return (
     <main>
       <Noise />

@@ -3,6 +3,27 @@ import { useGsapPreLoader } from '../hooks/useGsap';
 import useArrayRef from '../hooks/useArrayRef';
 import tw from 'twin.macro';
 
+const PreLoader = () => {
+  const [lettersRef, setLettersRef] = useArrayRef<HTMLSpanElement>();
+  const text = "Yejin's Portfolio";
+
+  useGsapPreLoader(lettersRef);
+
+  return (
+    <PreLoaderContainer className="preloader">
+      <PreLoaderText>
+        {text.split('').map((letter, index) => (
+          <span key={index} ref={setLettersRef}>
+            {letter}
+          </span>
+        ))}
+      </PreLoaderText>
+    </PreLoaderContainer>
+  );
+};
+
+export default PreLoader;
+
 const PreLoaderContainer = styled.div`
   ${tw`
     h-screen
@@ -26,24 +47,3 @@ const PreLoaderText = styled.div`
     `}
   }
 `;
-
-const PreLoader = () => {
-  const [lettersRef, setLettersRef] = useArrayRef<HTMLSpanElement>();
-  const text = "Yejin's Portfolio";
-
-  useGsapPreLoader(lettersRef);
-
-  return (
-    <PreLoaderContainer className="preloader">
-      <PreLoaderText>
-        {text.split('').map((letter, index) => (
-          <span key={index} ref={setLettersRef}>
-            {letter}
-          </span>
-        ))}
-      </PreLoaderText>
-    </PreLoaderContainer>
-  );
-};
-
-export default PreLoader;

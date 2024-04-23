@@ -1,10 +1,9 @@
 import { useGsapTitle } from '../../hooks/useGsap';
 import styled from 'styled-components';
 import useArrayRef from '../../hooks/useArrayRef';
-import { memo } from 'react';
 import tw from 'twin.macro';
 
-const SectionTitle = memo(({ children }: { children: string }) => {
+const SectionTitle = ({ children }: { children: string }) => {
   const [lettersRef, setLettersRef] = useArrayRef<HTMLSpanElement>();
 
   useGsapTitle(lettersRef);
@@ -18,7 +17,7 @@ const SectionTitle = memo(({ children }: { children: string }) => {
       ))}
     </Title>
   );
-});
+};
 
 export default SectionTitle;
 

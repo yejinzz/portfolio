@@ -23,7 +23,6 @@ const SubTitleContainer = styled.h2`
       relative
       tracking-[7px]
       text-[1.5rem]
-      // text-gray
       uppercase
       font-bold
     `}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DropDownCloseArrow from '/public/image/svg/close_arrow.svg?react';
 import DropDownOpenArrow from '/public/image/svg/open_arrow.svg?react';
 import styled, { css, keyframes } from 'styled-components';
@@ -13,7 +13,7 @@ interface type {
 const ContribDropdown = ({ contrib }: type) => {
   const [open, setOpen] = useState<boolean>(false);
   const [visibilityAnimation, setVisibilityAnimation] = useState(false);
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) {
       setOpen(true);
     } else {
