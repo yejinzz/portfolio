@@ -1,8 +1,5 @@
-import './App.css';
-// import useSmoothScroll from './hooks/useSmoothScroll';
 import PreLoader from './components/PreLoader';
 import styled from 'styled-components';
-// import BG from './components/common/BG';
 import Navbar from './components/common/Navbar';
 import Social from './components/common/Social';
 import Home from './pages/Home';
@@ -12,7 +9,6 @@ import tw from 'twin.macro';
 import Education from './pages/Education';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
 
 const Noise = styled.div`
   ${tw`

@@ -12,14 +12,14 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
   useGSAP(() => {
     tl.from(items.current, {
       opacity: 0,
-      y: 100,
+      y: 120,
       skewY: 50,
       stagger: 0.1,
       ease: 'elastic.out(0.9, 0.8)', // Elastic.easeOut 대신에 gsap에서는 문자열로 사용
     })
       .to(items.current, {
         duration: 1,
-        y: 100,
+        y: 120,
         skewY: -50,
         stagger: 0.1,
         ease: 'Power3.easeOut',
