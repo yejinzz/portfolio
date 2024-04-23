@@ -45,9 +45,7 @@ export default {
       },
       fontFamily: {
         pretendard: ['Pretendard'],
-        montserrat: ['Montserrat'],
         poppins: ['Poppins'],
-        cabinet: ['Cabinet'],
       },
     },
   },
