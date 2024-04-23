@@ -67,7 +67,7 @@ export const projectDetailData = [
       '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 판매할 수 있도록 도와주는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
     period: '2023.06.28 - 2023.07.24',
     team: '팀 프로젝트 ( 프론트엔드 3명 , 백엔드 3명 ) ',
-    stack: ['React', 'Redux-Toolkit', 'styled-components', 'Axios', 'MUI'],
+    stack: ['React', 'Redux-Toolkit', 'Styled-Components', 'Tailwind CSS', 'Gsap'],
     featinfo: ['로그인, 회원가입, 유저 페이지 담당', '공통 컴포넌트 작업', '반응형 웹 구현', '웹 표준 / 접근성 고려'],
     parts: [
       {

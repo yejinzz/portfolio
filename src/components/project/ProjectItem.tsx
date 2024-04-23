@@ -1,123 +1,111 @@
 import styled from 'styled-components';
 import { projectDataProps } from '../../types/types';
 import { useGsapProjectReveal } from '../../hooks/useGsap';
-import { RefObject, memo, useRef } from 'react';
-import Button from './Button';
+import { RefObject, memo, useCallback, useRef, useState } from 'react';
+import MoreViewBtn from './button/MoreViewBtn';
 import StackList from '../common/StackList';
-// import ProjectSlider from './ProjectSlider';
+import tw from 'twin.macro';
+import ProjectModal from './modal/ProjectModal';
+import { ProjectData } from '../../data/projectData';
 
 interface ProjectListItemProps {
   data: projectDataProps;
-  onClickMoreView: (id: number) => void;
+  // onClickMoreView: (id: number) => void;
 }
 
-const ProjectItem = memo(({ data, onClickMoreView }: ProjectListItemProps) => {
+const ProjectItem = memo(({ data }: ProjectListItemProps) => {
+  const [projectId, setProjectId] = useState<number>(0);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
   const projectRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectLeftRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectRightRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+
   useGsapProjectReveal(projectLeftRef, projectRightRef, projectRef);
-  console.log('리렌더링');
+
+  const onClickMoreView = useCallback(
+    (id: number) => {
+      setIsOpenModal(true);
+      setProjectId(id);
+    },
+    [setIsOpenModal, setProjectId]
+  );
+
   return (
-    <ProjectItemContainer ref={projectRef}>
-      <div ref={projectLeftRef}>
-        <img src={data.imgUrl[0]} />
-      </div>
-      <ProjectDescBox ref={projectRightRef}>
-        <h1>{`0${data.id}`}</h1>
-        <h2>{data.name}</h2>
-        <p>{data.period}</p>
-        <p>{data.subTitle}</p>
-        <StackList stackData={data.stack} />
-        {/* <TagBox>
-          {data.stack.map((item, idx) => (
-            <Tag key={idx}>{item}</Tag>
-          ))}
-        </TagBox> */}
-        <Button dataId={data.id} onClickMoreView={onClickMoreView} />
-        {/* <Btn onClick={() => onClickMoreView(data.id)}>more view</Btn> */}
-      </ProjectDescBox>
-    </ProjectItemContainer>
+    <>
+      {isOpenModal &&
+        ProjectData.map((detail, idx) => {
+          return detail.id === projectId && <ProjectModal key={idx} detail={detail} setIsOpenModal={setIsOpenModal} />;
+        })}
+
+      <ProjectItemContainer ref={projectRef}>
+        <div className="flex-1" ref={projectLeftRef}>
+          <img src={data.thumbImg} alt={data.name} />
+        </div>
+        <ProjectDescBox ref={projectRightRef}>
+          <h2>{`0${data.id}`}</h2>
+          <h3>{data.name}</h3>
+          <p>{data.period}</p>
+          <p>{data.subTitle}</p>
+          <StackList stackData={data.stack} />
+          <MoreViewBtn dataId={data.id} onClickMoreView={onClickMoreView} />
+        </ProjectDescBox>
+      </ProjectItemContainer>
+    </>
   );
 });
 
 export default ProjectItem;
 
 const ProjectItemContainer = styled.div`
-  /* position: relative; */
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    /* max-width: 10rem; */
-  }
+  ${tw`
+    flex
+    flex-col
+    items-center
+    gap-[5rem]
+    md:flex-row
+  `}
+
   img {
-    display: block;
-    aspect-ratio: 16 / 9;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 20px;
-    transition: box-shadow 0.3s ease;
-    box-shadow:
-      0 2.8px 2.2px rgba(211, 211, 211, 0.02),
-      0 6.7px 5.3px rgba(211, 211, 211, 0.028),
-      0 12.5px 10px rgba(211, 211, 211, 0.035),
-      0 22.3px 17.9px rgba(211, 211, 211, 0.042),
-      0 41.8px 33.4px rgba(211, 211, 211, 0.05),
-      0 100px 80px rgba(211, 211, 211, 0.07);
+    ${tw`
+      max-w-full
+      object-cover
+      object-center
+      transition
+      duration-300
+      shadow-[3px 3px 10px rgba(0, 0, 0, 0.5),10px 10px 70px rgba(211, 211, 211, 0.1)]
+    `}/* 10px 80px 80px rgba(211, 211, 211, 0.1); */
   }
 `;
 
 const ProjectDescBox = styled.div`
-  /* position: relative; */
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  /* height: 100%; */
-  > h1 {
-    position: absolute;
-    top: -4rem;
-    left: -1rem;
-    color: #00000019;
-    font-size: 7rem;
-    color: ${({ theme }) => theme.color.title};
+  ${tw`
+    flex-1
+    flex
+    flex-col
+    gap-4
+    w-full
+  `} > h2 {
+    ${tw`
+      absolute
+      -top-12
+      left-0
+      gap-4
+      w-full
+      text-[4.5rem]
+      text-gray50
+      md:text-[6rem]
+      md:-top-16
+      md:-left-4
+    `}
   }
-  > h2 {
-    font-size: 3rem;
-    color: ${({ theme }) => theme.color.point};
+  > h3 {
+    ${tw`
+      gap-4
+      w-full
+      text-[2.5rem]
+      z-10
+      md:text-[3.5rem]
+    `}
   }
 `;
-
-// const TagBox = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 0.5rem;
-// `;
-
-// const Tag = styled.span`
-//   padding: 0.5rem 1rem;
-//   border: 0.5px solid #6b6b6b;
-//   border-radius: 20px;
-// `;
-
-// const Btn = styled.button`
-//   width: fit-content;
-//   border-bottom: 0.5px solid #6b6b6b;
-//   background-color: transparent;
-//   /* border-radius: 20px; */
-// `;
-
-// const Button = ({ data, onClickMoreView }: ProjectListItemProps) => {
-//   return <Btn onClick={() => onClickMoreView(data.id)}>more view</Btn>;
-// };
-
-// const Btn = styled.button`
-//   width: fit-content;
-//   border-bottom: 0.5px solid #6b6b6b;
-//   background-color: transparent;
-//   /* border-radius: 20px; */
-// `;

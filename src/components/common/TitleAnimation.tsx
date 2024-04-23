@@ -1,9 +1,9 @@
 import styled, { keyframes } from 'styled-components';
-import { TitleAnimationProps } from '../../types/types';
+import tw from 'twin.macro';
 
-const TitleAnimation = ({ children, className }: TitleAnimationProps) => {
+const TitleAnimation = ({ children }: { children: string }) => {
   return (
-    <TitleContainer className={className}>
+    <TitleContainer>
       {children.split('').map((el, idx) => (
         <span key={el + idx}>{el}</span>
       ))}
@@ -37,16 +37,24 @@ const TitleWordAnimation = keyframes`
 `;
 
 const TitleContainer = styled.div`
-  font-weight: bold;
+  ${tw`
+    text-[3rem]
+    font-bold
+    uppercase
+  `}
+  /* font-weight: bold;
   font-family: 'Poppins', 'sans-serif';
   font-size: 4rem;
   text-transform: uppercase;
   letter-spacing: 7px;
-
+  background-color: #bda249;
+  width: 100px;
+  height: 100px; */
+  /* text-transform: uppercase; */
   & > span {
     position: relative;
     animation: ${TitleWordAnimation} 3s infinite;
-    color: #d2d2d2;
+    /* color: #d2d2d2; */
     &:nth-of-type(1) {
       animation-delay: 0.3s;
       /* color: #ffffff; */

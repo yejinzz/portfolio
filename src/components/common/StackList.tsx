@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 interface StackListProps {
   stackData: string[];
 }
@@ -16,14 +17,21 @@ const StackList = ({ stackData }: StackListProps) => {
 export default StackList;
 
 const StackListContainer = styled.ul`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  ${tw`
+    flex
+    flex-wrap
+    gap-[0.5rem]
+  `}
 `;
 
 const StackItem = styled.li`
-  padding: 0.5rem 1rem;
-  border: 0.5px solid #6b6b6b;
-  border-radius: 20px;
+  ${tw`
+    px-3
+    py-2
+    border
+    border-solid 
+    rounded-[20px]
+    border-[#6c92af]
+    text-[#6c92af]
+  `}
 `;

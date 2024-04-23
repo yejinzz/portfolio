@@ -3,226 +3,168 @@ import { projectDataProps } from '../types/types';
 export const ProjectData: projectDataProps[] = [
   {
     id: 1,
+    thumbImg: '/image/project/ieun/Ieun.png',
+    link: { deploy: 'https://ieun.store/', github: 'https://github.com/yejinzz/Ieun' },
     name: 'Ieun',
     subTitle: '업사이클링 중개 서비스',
-    team: '팀 프로젝트 ( 프론트엔드 3명 , 백엔드 3명 )',
+    team: '팀 프로젝트',
     period: '2023.06.28 - 2023.07.24',
-    stack: ['React', 'Redux-Toolkit', 'styled-components', 'Axios', 'MUI'],
-    // detail
+    stack: ['React', 'Redux-Toolkit', 'Styled-Components', 'Axios', 'MUI'],
     overview:
-      '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 판매할 수 있도록 도와주는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
+      '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 구매 또는 판매를 돕는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
     featinfo: ['로그인, 회원가입, 유저 페이지 담당', '공통 컴포넌트 작업', '반응형 웹 구현', '웹 표준 / 접근성 고려'],
-    parts: [
-      {
-        title: '회원가입, 로그인, 유저 페이지 담당',
-        description:
-          '회원가입, 로그인, 로그아웃, 유저 정보, 인증 토큰 관리 등 회원 전반적인 기능을 개발하였습니다. \n이메일 인증 프로세스에서 발생하는 로딩 지연 상태를 사용자에게 명확하게 보여주기 위해 로딩 스피너 애니메이션을 도입하였습니다. 이를 통해 사용자가 느낄 수 있는 불편함을 최소화함으로써 사용자 경험을 개선하였습니다.',
-      },
-      {
-        title: '반응형 웹 구현',
-        description:
-          '다양한 디바이스 사이즈를 고려하여 프로젝트 전반적인 반응형 웹을 구현했습니다.\n 메인페이지 배너에 ScrollTrigger을 활용하여 가로 스크롤 효과를 적용하였지만, 모바일 사용자에게 불편함을 초래한다는 판단하에 \n 모바일 화면에서는 스와이프 기능을 도입하여 반응형을 구현했습니다.',
-      },
-      {
-        title: 'Redux-Toolkit 으로 마이그레이션',
-        description:
-          '기존 Prop Drilling을 방지하고자 하는 목적으로 Context API를 사용해 전역상태를 관리했었는데, 프로젝트 규모가 커짐에 따라 Context API 사용은 부적절하다고 판단하였습니다. 이후 Redux-Toolkit으로 마이그레이션을 진행하였고, 불필요한 리렌더링을 방지하여 성능 이슈를 해결하는 이점을 얻었습니다. ',
-      },
-      {
-        title: 'Custom Hooks를 활용해 비즈니스 로직과 재사용 로직 분리',
-        description:
-          '유효성 검증 로직들을 객체로 분리하고, `useErrHandler` 커스텀 훅을 사용해 해당 필드 입력값에 대한 오류메세지를 처리하도록 구현하여 재사용성을 높였습니다.',
-      },
-      {
-        title: '리팩토링을 통해 코드개선',
-        description:
-          '대규모 리팩토링을 진행하며 기존에 중복되는 코드들을 고차함수를 활용해 개선하는 등 코드의 가독성을 높히고 유지보수성을 향상시켰습니다.',
-      },
-      {
-        title: 'Axios의 instance 기능을 활용한 네트워크 요청 모듈화',
-        description:
-          '회원가입/로그인 제작 시 Axios의 instance 기능을 활용해 네트워크 요청 모듈화하고 공용 헤더나 주소를 관리하였습니다.',
-      },
-      {
-        title: '웹 표준 / 접근성 고려 및 퍼블리싱',
-        description:
-          '웹 표준을 준수하며 꼼꼼한 시멘틱 마크업을 합니다.\n\n또한 요구사항에 따라 slick slider와 같은 외부 라이브러리를 활용해 동적인 화면을 보여줬습니다. 간단한 토글 버튼과 같은 작업에는 JQuery를 사용해 구현했습니다.',
-      },
+    contribs: [
+      '회원가입, 로그인, 유저 페이지 기능 및 UI 개발',
+      'Code splitting, 이미지 최적화 등을 통해 Lighthouse performance 점수 64점 → 97점으로 개선',
+      '페이지 전반적인 media query 반응형 웹 구현',
+      '기존 Module CSS → Styled-Components로 마이그레이션',
+      'Loding Spinner 애니메이션 도입을 통한 UX 개선',
+      'Axios instance 기능을 활용한 네트워크 요청 모듈화',
+      'Create 페이지의 중복 코드를 개선하고 attribute 데이터를 기반으로 필드를 동적 렌더링하도록 개선',
+      'URL 직접 접근시 404 페이지 처리 및 비로그인/로그인 유저의 접근 제한이 필요한 모든 페이지에 redirect 적용 (Outlet 컴포넌트 활용)',
     ],
-    imgUrl: [
-      '/image/project/ieun/Ieun.png',
-      '/image/project/ieun/main.png',
-      '/image/project/ieun/login.png',
-      '/image/project/ieun/signup.png',
-      '/image/project/ieun/mypage.png',
-      '/image/project/ieun/funding.png',
-      '/image/project/ieun/store.png',
-      '/image/project/ieun/create-funding.png',
-      '/image/project/ieun/create-store.png',
-      '/image/project/ieun/edit-modal.png',
+    screen: [
+      { imgUrl: '/image/project/ieun/main.png', screenDesc: '메인 페이지' },
+      { imgUrl: '/image/project/ieun/login.png', screenDesc: '로그인 페이지' },
+      { imgUrl: '/image/project/ieun/signup.png', screenDesc: '회원가입 페이지' },
+      { imgUrl: '/image/project/ieun/mypage.png', screenDesc: '마이 페이지' },
+      { imgUrl: '/image/project/ieun/edit-modal.png', screenDesc: '마이 페이지 - 프로필 모달' },
+      { imgUrl: '/image/project/ieun/funding.png', screenDesc: '펀딩 페이지' },
+      { imgUrl: '/image/project/ieun/store.png', screenDesc: '스토어 페이지' },
+      { imgUrl: '/image/project/ieun/create-funding.png', screenDesc: '펀딩 글 생성 페이지' },
+      { imgUrl: '/image/project/ieun/create-store.png', screenDesc: '펀딩 글 생성 페이지' },
     ],
   },
   {
     id: 2,
+    thumbImg: '/image/project/portfolio/main.png',
+    link: {
+      deploy: 'https://web-trip-client-85phb42blv09cyua.sel5.cloudtype.app/',
+      github: 'https://github.com/yejinzz/triP',
+    },
     name: "Yejin's Portfolio",
     subTitle: '포트폴리오 웹사이트',
     period: '2024.01.12 - 2024.01.27',
-    stack: ['React', 'TypeScript', 'Vite', 'Redux-Toolkit', 'styled-components'],
-    // detail
-    overview:
-      '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 판매할 수 있도록 도와주는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
-    team: '팀 프로젝트 ( 프론트엔드 3명 , 백엔드 3명 )',
+    stack: ['React', 'TypeScript', 'Vite', 'Styled-Components', 'Tailwind CSS', 'Gsap'],
+    overview: '취업용 포트폴리오 웹사이트 입니다. GSAP ScrollTrigger를 사용하여 웹 모션을 구현하였습니다. ',
+    team: '개인 프로젝트',
     featinfo: ['로그인, 회원가입, 유저 페이지 담당', '공통 컴포넌트 작업', '반응형 웹 구현', '웹 표준 / 접근성 고려'],
-    parts: [
-      {
-        title: '회원가입, 로그인, 유저 페이지 담당',
-        description:
-          '회원가입, 로그인, 로그아웃, 유저 정보, 인증 토큰 관리 등 회원 전반적인 기능을 개발하였습니다. \n이메일 인증 프로세스에서 발생하는 로딩 지연 상태를 사용자에게 명확하게 보여주기 위해 로딩 스피너 애니메이션을 도입하였습니다. 이를 통해 사용자가 느낄 수 있는 불편함을 최소화함으로써 사용자 경험을 개선하였습니다.',
-      },
-      {
-        title: '반응형 웹 구현',
-        description:
-          '다양한 디바이스 사이즈를 고려하여 프로젝트 전반적인 반응형 웹을 구현했습니다.\n 메인페이지 배너에 ScrollTrigger을 활용하여 가로 스크롤 효과를 적용하였지만, 모바일 사용자에게 불편함을 초래한다는 판단하에 \n 모바일 화면에서는 스와이프 기능을 도입하여 반응형을 구현했습니다.',
-      },
-      {
-        title: 'Redux-Toolkit 으로 마이그레이션',
-        description:
-          '기존 Prop Drilling을 방지하고자 하는 목적으로 Context API를 사용해 전역상태를 관리했었는데, 프로젝트 규모가 커짐에 따라 Context API 사용은 부적절하다고 판단하였습니다. 이후 Redux-Toolkit으로 마이그레이션을 진행하였고, 불필요한 리렌더링을 방지하여 성능 이슈를 해결하는 이점을 얻었습니다. ',
-      },
-      {
-        title: 'Custom Hooks를 활용해 비즈니스 로직과 재사용 로직 분리',
-        description:
-          '유효성 검증 로직들을 객체로 분리하고, `useErrHandler` 커스텀 훅을 사용해 해당 필드 입력값에 대한 오류메세지를 처리하도록 구현하여 재사용성을 높였습니다.',
-      },
-      {
-        title: '리팩토링을 통해 코드개선',
-        description:
-          '대규모 리팩토링을 진행하며 기존에 중복되는 코드들을 고차함수를 활용해 개선하는 등 코드의 가독성을 높히고 유지보수성을 향상시켰습니다.',
-      },
-      {
-        title: 'Axios의 instance 기능을 활용한 네트워크 요청 모듈화',
-        description:
-          '회원가입/로그인 제작 시 Axios의 instance 기능을 활용해 네트워크 요청 모듈화하고 공용 헤더나 주소를 관리하였습니다.',
-      },
-      {
-        title: '웹 표준 / 접근성 고려 및 퍼블리싱',
-        description:
-          '웹 표준을 준수하며 꼼꼼한 시멘틱 마크업을 합니다.\n\n또한 요구사항에 따라 slick slider와 같은 외부 라이브러리를 활용해 동적인 화면을 보여줬습니다. 간단한 토글 버튼과 같은 작업에는 JQuery를 사용해 구현했습니다.',
-      },
+    contribs: [
+      'GSAP 라이브러리를 활용한 스크롤 애니메이션 구현.',
+      'Tailwind CSS를 활용한 모바일 우선 접근 방식으로 다양한 디바이스에 반응하도록 작업.',
+      '라이트 모드 다크모드 구현',
+      'React Provider를 활용하여 불필요한 리렌더링 개선',
+      'SEO를 위한 Semantic Markup',
     ],
-    imgUrl: ['/image/project/portfolio/main.png'],
+    screen: [
+      { imgUrl: '/image/project/ieun/main.png', screenDesc: '메인 페이지' },
+      { imgUrl: '/image/project/ieun/login.png', screenDesc: '로그인 페이지' },
+      { imgUrl: '/image/project/ieun/signup.png', screenDesc: '회원가입 페이지' },
+      { imgUrl: '/image/project/ieun/mypage.png', screenDesc: '마이 페이지' },
+      { imgUrl: '/image/project/ieun/edit-modal.png', screenDesc: '마이 페이지 - 프로필 모달' },
+      { imgUrl: '/image/project/ieun/funding.png', screenDesc: '펀딩 페이지' },
+      { imgUrl: '/image/project/ieun/store.png', screenDesc: '스토어 페이지' },
+      { imgUrl: '/image/project/ieun/create-funding.png', screenDesc: '펀딩 글 생성 페이지' },
+      { imgUrl: '/image/project/ieun/create-store.png', screenDesc: '펀딩 글 생성 페이지' },
+    ],
   },
   {
     id: 3,
+    thumbImg: '/image/project/triP/triP.png',
+    link: {
+      deploy: 'https://web-trip-client-85phb42blv09cyua.sel5.cloudtype.app/',
+      github: 'https://github.com/yejinzz/triP',
+    },
     name: 'triP',
-    subTitle: '여행 일정 관리 서비스',
+    subTitle: '국내 여행 일정 관리 서비스',
     period: '2023.05.12 - 2023.05.18',
-    stack: ['React', 'Redux-Toolkit', 'styled-components', 'Axios'],
+    stack: ['Vite', 'React', 'Redux-Toolkit', 'Styled-Components', 'Axios', 'Node.js', 'Express', 'Mongo DB'],
     // detail
     overview:
-      '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 판매할 수 있도록 도와주는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
-    team: '솔로 프로젝트',
+      '여행 일정을 계획 / 관리할 수 있는 국내 여행 플래너입니다.\n Open API를 활용하였으며, \n 직접 서버 구축부터 프론트엔드 개발까지 진행한 프로젝트 입니다.',
+    team: '개인 프로젝트',
     featinfo: ['로그인, 회원가입, 유저 페이지 담당', '공통 컴포넌트 작업', '반응형 웹 구현', '웹 표준 / 접근성 고려'],
-    parts: [
-      {
-        title: '회원가입, 로그인, 유저 페이지 담당',
-        description:
-          '회원가입, 로그인, 로그아웃, 유저 정보, 인증 토큰 관리 등 회원 전반적인 기능을 개발하였습니다. \n이메일 인증 프로세스에서 발생하는 로딩 지연 상태를 사용자에게 명확하게 보여주기 위해 로딩 스피너 애니메이션을 도입하였습니다. 이를 통해 사용자가 느낄 수 있는 불편함을 최소화함으로써 사용자 경험을 개선하였습니다.',
-      },
-      {
-        title: '반응형 웹 구현',
-        description:
-          '다양한 디바이스 사이즈를 고려하여 프로젝트 전반적인 반응형 웹을 구현했습니다.\n 메인페이지 배너에 ScrollTrigger을 활용하여 가로 스크롤 효과를 적용하였지만, 모바일 사용자에게 불편함을 초래한다는 판단하에 \n 모바일 화면에서는 스와이프 기능을 도입하여 반응형을 구현했습니다.',
-      },
-      {
-        title: 'Redux-Toolkit 으로 마이그레이션',
-        description:
-          '기존 Prop Drilling을 방지하고자 하는 목적으로 Context API를 사용해 전역상태를 관리했었는데, 프로젝트 규모가 커짐에 따라 Context API 사용은 부적절하다고 판단하였습니다. 이후 Redux-Toolkit으로 마이그레이션을 진행하였고, 불필요한 리렌더링을 방지하여 성능 이슈를 해결하는 이점을 얻었습니다. ',
-      },
-      {
-        title: 'Custom Hooks를 활용해 비즈니스 로직과 재사용 로직 분리',
-        description:
-          '유효성 검증 로직들을 객체로 분리하고, `useErrHandler` 커스텀 훅을 사용해 해당 필드 입력값에 대한 오류메세지를 처리하도록 구현하여 재사용성을 높였습니다.',
-      },
-      {
-        title: '리팩토링을 통해 코드개선',
-        description:
-          '대규모 리팩토링을 진행하며 기존에 중복되는 코드들을 고차함수를 활용해 개선하는 등 코드의 가독성을 높히고 유지보수성을 향상시켰습니다.',
-      },
-      {
-        title: 'Axios의 instance 기능을 활용한 네트워크 요청 모듈화',
-        description:
-          '회원가입/로그인 제작 시 Axios의 instance 기능을 활용해 네트워크 요청 모듈화하고 공용 헤더나 주소를 관리하였습니다.',
-      },
-      {
-        title: '웹 표준 / 접근성 고려 및 퍼블리싱',
-        description:
-          '웹 표준을 준수하며 꼼꼼한 시멘틱 마크업을 합니다.\n\n또한 요구사항에 따라 slick slider와 같은 외부 라이브러리를 활용해 동적인 화면을 보여줬습니다. 간단한 토글 버튼과 같은 작업에는 JQuery를 사용해 구현했습니다.',
-      },
+    contribs: [
+      'Kakao Map API와 Tour API 활용한 장소 검색 기능 및 여행 일정 관리 기능 구현',
+      '보안을 고려한 인증 토큰 관리 및 리프레쉬 토큰을 활용한 자동 로그인 / 로그아웃 구현',
+      '효과적인 폼 관리와 유효성 검사를 위한 React Hook Form 도입',
+      'Portal을 사용한 Modal 구현으로 불필요한 렌더링 최소화',
+      'NodeJS 기반 서버 구축',
+      'mongoDB , mongoose를 이용한 데이터베이스 관리',
+      'RESTful api 설계',
     ],
-    imgUrl: [
-      '/image/project/triP/triP.png',
-      '/image/project/cozshopping/main.png',
-      '/image/project/cozshopping/product-list.png',
-      '/image/project/cozshopping/product-modal.png',
-      '/image/project/cozshopping/bookmark.png',
+    screen: [
+      { imgUrl: '/image/project/triP/main.png', screenDesc: '메인 페이지' },
+      { imgUrl: '/image/project/triP/login.png', screenDesc: '로그인 페이지' },
+      { imgUrl: '/image/project/triP/signup.png', screenDesc: '회원가입 페이지' },
+      { imgUrl: '/image/project/triP/planPage.png', screenDesc: '펀딩 페이지' },
+      { imgUrl: '/image/project/triP/myPage.png', screenDesc: '마이 페이지' },
+      { imgUrl: '/image/project/triP/editProfile.png', screenDesc: '마이 페이지 - 프로필 수정' },
     ],
   },
   {
     id: 4,
-
+    thumbImg: '/image/project/stackoverfrow/StackoverFlow.png',
+    link: {
+      deploy: 'https://web-trip-client-85phb42blv09cyua.sel5.cloudtype.app/',
+      github: 'https://github.com/yejinzz/triP',
+    },
+    name: 'StackoverFlow',
+    subTitle: '스택오버플로우 클론 코딩 프로젝트',
+    period: '2023.06.09 - 2023.06.27',
+    stack: ['React', 'Context API', 'CSS-Module', 'Axios'],
+    overview:
+      '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 판매할 수 있도록 도와주는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
+    team: '팀 프로젝트',
+    featinfo: ['로그인, 회원가입, 유저 페이지 담당', '공통 컴포넌트 작업', '반응형 웹 구현', '웹 표준 / 접근성 고려'],
+    contribs: [
+      '회원가입, 로그인, 유저 페이지 담당',
+      '반응형 웹 구현',
+      'Redux-Toolkit 으로 마이그레이션',
+      'Custom Hooks를 활용해 비즈니스 로직과 재사용 로직 분리',
+      '리팩토링을 통해 코드개선',
+      'Axios의 instance 기능을 활용한 네트워크 요청 모듈화',
+      '웹 표준 / 접근성 고려 및 퍼블리싱',
+    ],
+    screen: [
+      { imgUrl: '/image/project/stackoverfrow/main.png', screenDesc: '메인 페이지' },
+      { imgUrl: '/image/project/stackoverfrow/login.png', screenDesc: '로그인 페이지' },
+      { imgUrl: '/image/project/stackoverfrow/signup.png', screenDesc: '회원가입 페이지' },
+      { imgUrl: '/image/project/stackoverfrow/question-detail.png', screenDesc: '질문 상세 페이지' },
+      { imgUrl: '/image/project/stackoverfrow/create-question.png', screenDesc: '질문 생성 페이지' },
+      { imgUrl: '/image/project/stackoverfrow/user-profile.png', screenDesc: '프로필 페이지' },
+      { imgUrl: '/image/project/stackoverfrow/edit-profile.png', screenDesc: '프로필 수정 페이지' },
+    ],
+  },
+  {
+    id: 5,
+    thumbImg: '/image/project/cozshopping/CozShopping.png',
+    link: {
+      deploy: 'https://web-trip-client-85phb42blv09cyua.sel5.cloudtype.app/',
+      github: 'https://github.com/yejinzz/triP',
+    },
     name: 'Coz Shopping',
     subTitle: '코드스테이츠 과제 쇼핑몰 프로젝트',
     period: '2023.05.12 - 2023.05.18',
     stack: ['React', 'Redux-Toolkit', 'styled-components', 'Axios'],
-    // detail
     overview:
       '利 이로울 이 / 隱 숨을 은\n‘이은’은 사용하지 않는 자재를 펀딩 받아 새로운 용도로 활용하거나, 판매할 수 있도록 도와주는 업사이클링 중개 서비스입니다.\n‘숨어있는 것들로 세상을 이롭게’ , ‘펀딩 이용자와 업사이클러의 연결고리’ 라는 두 가지 의미를 담고 있습니다.',
-    team: '솔로 프로젝트',
+    team: '개인 프로젝트',
     featinfo: ['로그인, 회원가입, 유저 페이지 담당', '공통 컴포넌트 작업', '반응형 웹 구현', '웹 표준 / 접근성 고려'],
-    parts: [
-      {
-        title: '회원가입, 로그인, 유저 페이지 담당',
-        description:
-          '회원가입, 로그인, 로그아웃, 유저 정보, 인증 토큰 관리 등 회원 전반적인 기능을 개발하였습니다. \n이메일 인증 프로세스에서 발생하는 로딩 지연 상태를 사용자에게 명확하게 보여주기 위해 로딩 스피너 애니메이션을 도입하였습니다. 이를 통해 사용자가 느낄 수 있는 불편함을 최소화함으로써 사용자 경험을 개선하였습니다.',
-      },
-      {
-        title: '반응형 웹 구현',
-        description:
-          '다양한 디바이스 사이즈를 고려하여 프로젝트 전반적인 반응형 웹을 구현했습니다.\n 메인페이지 배너에 ScrollTrigger을 활용하여 가로 스크롤 효과를 적용하였지만, 모바일 사용자에게 불편함을 초래한다는 판단하에 \n 모바일 화면에서는 스와이프 기능을 도입하여 반응형을 구현했습니다.',
-      },
-      {
-        title: 'Redux-Toolkit 으로 마이그레이션',
-        description:
-          '기존 Prop Drilling을 방지하고자 하는 목적으로 Context API를 사용해 전역상태를 관리했었는데, 프로젝트 규모가 커짐에 따라 Context API 사용은 부적절하다고 판단하였습니다. 이후 Redux-Toolkit으로 마이그레이션을 진행하였고, 불필요한 리렌더링을 방지하여 성능 이슈를 해결하는 이점을 얻었습니다. ',
-      },
-      {
-        title: 'Custom Hooks를 활용해 비즈니스 로직과 재사용 로직 분리',
-        description:
-          '유효성 검증 로직들을 객체로 분리하고, `useErrHandler` 커스텀 훅을 사용해 해당 필드 입력값에 대한 오류메세지를 처리하도록 구현하여 재사용성을 높였습니다.',
-      },
-      {
-        title: '리팩토링을 통해 코드개선',
-        description:
-          '대규모 리팩토링을 진행하며 기존에 중복되는 코드들을 고차함수를 활용해 개선하는 등 코드의 가독성을 높히고 유지보수성을 향상시켰습니다.',
-      },
-      {
-        title: 'Axios의 instance 기능을 활용한 네트워크 요청 모듈화',
-        description:
-          '회원가입/로그인 제작 시 Axios의 instance 기능을 활용해 네트워크 요청 모듈화하고 공용 헤더나 주소를 관리하였습니다.',
-      },
-      {
-        title: '웹 표준 / 접근성 고려 및 퍼블리싱',
-        description:
-          '웹 표준을 준수하며 꼼꼼한 시멘틱 마크업을 합니다.\n\n또한 요구사항에 따라 slick slider와 같은 외부 라이브러리를 활용해 동적인 화면을 보여줬습니다. 간단한 토글 버튼과 같은 작업에는 JQuery를 사용해 구현했습니다.',
-      },
+    contribs: [
+      '회원가입, 로그인, 유저 페이지 담당',
+      '반응형 웹 구현',
+      'Redux-Toolkit 으로 마이그레이션',
+      'Custom Hooks를 활용해 비즈니스 로직과 재사용 로직 분리',
+      '리팩토링을 통해 코드개선',
+      'Axios의 instance 기능을 활용한 네트워크 요청 모듈화',
+      '웹 표준 / 접근성 고려 및 퍼블리싱',
     ],
-    imgUrl: [
-      '/image/project/cozshopping/CozShopping.png',
-      '/image/project/cozshopping/main.png',
-      '/image/project/cozshopping/product-list.png',
-      '/image/project/cozshopping/product-modal.png',
-      '/image/project/cozshopping/bookmark.png',
+    screen: [
+      { imgUrl: '/image/project/cozshopping/main.png', screenDesc: '메인 페이지' },
+      { imgUrl: '/image/project/cozshopping/product-list.png', screenDesc: '상품 리스트 페이지' },
+      { imgUrl: '/image/project/cozshopping/product-modal.png', screenDesc: '상품 리스트 페이지 - 모달' },
+      { imgUrl: '/image/project/cozshopping/bookmark.png', screenDesc: '북마크 페이지' },
     ],
   },
 ];

@@ -4,10 +4,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RefObject } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
-const tl = gsap.timeline();
 
+const tl = gsap.timeline();
 export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
   // const tl = gsap.timeline();
+
   useGSAP(() => {
     tl.from(items.current, {
       opacity: 0,
@@ -73,6 +74,33 @@ export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
   }, []);
 };
 
+export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
+  ScrollTrigger.refresh();
+  useGSAP(() => {
+    // console.log(items);
+
+    gsap.fromTo(
+      items.current,
+      { autoAlpha: 0, y: 100 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        // delay: 0.1,
+        ease: 'power4.out',
+        stagger: 0.4,
+        scrollTrigger: {
+          trigger: '.eduction',
+          start: 'top center',
+          end: 'bottom center',
+          markers: true,
+          toggleActions: 'restart none none reverse',
+        },
+      }
+    );
+  }, []);
+};
+
 export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
   useGSAP(() => {
     // const el = items.map((item) => item.current);
@@ -97,6 +125,7 @@ export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: nu
 };
 
 export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
+  ScrollTrigger.refresh();
   useGSAP(() => {
     gsap.fromTo(
       items.current,
@@ -116,7 +145,7 @@ export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: numbe
           start: 'top center',
           // end: 'bottom bottom',
           // markers: true,
-          toggleActions: 'play none play reverse',
+          toggleActions: 'play none none reverse',
         },
       }
     );
@@ -133,8 +162,8 @@ export const useGsapAboutCircle = (trigger: RefObject<HTMLElement>) => {
 
       gsap.to('#path_line', {
         strokeDashoffset: 0,
-        duration: 1,
-        delay: 1,
+        duration: 1.5,
+        delay: 2,
         scrollTrigger: {
           trigger: trigger.current,
           start: 'top 10%',
@@ -206,6 +235,7 @@ export const useGsapProjectReveal = (
   right: RefObject<HTMLElement>,
   trigger: RefObject<HTMLElement>
 ) => {
+  ScrollTrigger.refresh();
   useGSAP(() => {
     console.log(left, right, trigger);
 

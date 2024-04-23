@@ -1,19 +1,14 @@
 import { RefObject, useEffect, useRef } from 'react';
-// import { useGsapGalleryImg, useGsapGalleryTitle, useGsapGalleryCategory } from '../hooks/gsap';
-// import gsap from 'gsap';
 import gsap, { Expo } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GalleryItem = () => {
+const ProfileImg = () => {
   const galleryImg: RefObject<SVGSVGElement> = useRef<SVGSVGElement>(null);
-  // const galleryTitle: RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
 
-  const useGsapGalleryImg = (item: RefObject<SVGSVGElement>) => {
+  const useGsapProfileImg = (item: RefObject<SVGSVGElement>) => {
     useEffect(() => {
-      // const el = item.current;
-
       gsap.fromTo(
         item.current,
         {
@@ -64,7 +59,7 @@ const GalleryItem = () => {
   //   }, []);
   // };
 
-  useGsapGalleryImg(galleryImg);
+  useGsapProfileImg(galleryImg);
   // useGsapGalleryTitle(galleryTitle, galleryImg);
 
   return (
@@ -84,21 +79,11 @@ const GalleryItem = () => {
         </clipPath>
       </defs>
 
-      <rect width="100%" height="100%" fill="#bda249" clipPath="url(#clip)" />
+      <rect width="100%" height="100%" fill="#3c5467" clipPath="url(#clip)" />
 
-      <image
-        x="-8%"
-        y="4%"
-        width="120%"
-        height="110%"
-        xlinkHref="/image/img.png"
-        clipPath="url(#clip)"
-        style={{
-          filter: 'grayscale(0.7) drop-shadow(-16px 15px 24px #00000090)',
-        }}
-      />
+      <image x="-8%" y="4%" width="120%" height="110%" xlinkHref="/image/profile_img.png" clipPath="url(#clip)" />
     </svg>
   );
 };
 
-export default GalleryItem;
+export default ProfileImg;

@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 import { useGsapNavReveal } from '../../hooks/useGsap';
 import useArrayRef from '../../hooks/useArrayRef';
-// import { HashLink } from 'react-router-hash-link';
+import tw from 'twin.macro';
 
 const Navbar = () => {
   const [navRef, setNavRefRef] = useArrayRef<HTMLLIElement>();
-
+  const navMenu = ['Home', 'About', 'Projects', 'Contact'];
   useGsapNavReveal(navRef, 6);
   return (
     <NavBar>
       <ul>
-        <li ref={setNavRefRef}>Home</li>
-        <li ref={setNavRefRef}>About</li>
-        <li ref={setNavRefRef}>Projects</li>
-        <li ref={setNavRefRef}>Contact</li>
+        {navMenu.map((menu, index) => (
+          <li key={index} ref={setNavRefRef}>
+            {menu}
+          </li>
+        ))}
       </ul>
     </NavBar>
   );
@@ -22,17 +23,19 @@ const Navbar = () => {
 export default Navbar;
 
 const NavBar = styled.nav`
-  position: fixed;
-  right: 0;
-  padding: 1.5rem;
-  /* z-index: 999; */
+  ${tw`
+    fixed
+    right-0
+`}
   ul {
-    font-size: ${({ theme }) => theme.fontSize.lg};
-
-    /* font-family: 'Montserrat', 'sans-serif'; */
-    /* font-weight: 100; */
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+    ${tw`
+    flex
+    items-center
+    fixed
+    right-0
+    p-6
+    text-lg
+    gap-8
+`}
   }
 `;

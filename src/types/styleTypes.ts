@@ -1,4 +1,11 @@
 export interface CircleTextProps {
-  index: number;
-  $wordLength: number;
+  deg: number;
+}
+
+export interface StackProps {
+  stack: string;
+}
+
+export interface ThumbUrlProp {
+  thumbUrl: string;
 }

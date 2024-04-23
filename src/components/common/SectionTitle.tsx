@@ -2,6 +2,7 @@ import { useGsapTitle } from '../../hooks/useGsap';
 import styled from 'styled-components';
 import useArrayRef from '../../hooks/useArrayRef';
 import { memo } from 'react';
+import tw from 'twin.macro';
 
 const SectionTitle = memo(({ children }: { children: string }) => {
   const [lettersRef, setLettersRef] = useArrayRef<HTMLSpanElement>();
@@ -9,33 +10,34 @@ const SectionTitle = memo(({ children }: { children: string }) => {
   useGsapTitle(lettersRef);
 
   return (
-    <SectionTitleBox className="text-container">
-      {/* <h2 >{children}</h2> */}
+    <Title>
       {children.split('').map((letter, index) => (
         <span key={index} ref={setLettersRef}>
           {letter}
         </span>
       ))}
-    </SectionTitleBox>
+    </Title>
   );
 });
 
 export default SectionTitle;
 
-const SectionTitleBox = styled.div`
-  /* position: sticky; */
-  /* top: 0; */
-  width: 100%;
-
+const Title = styled.h1`
+  ${tw`
+    my-[5rem]
+    w-full
+  `}
+  &> span:first-child {
+    ${tw`
+        text-point
+      `}
+  }
   & > span {
-    display: inline-block;
-    /* font-size: 3rem; */
-    font-size: ${({ theme }) => theme.fontSize.title};
-    color: ${({ theme }) => theme.color.title};
-    font-family: 'Cabinet', 'sans-serif';
-
-    font-weight: 700;
-    /* -webkit-text-stroke: 1px var(--color-main-text);
-    color: transparent; */
+    ${tw`
+      inline-block
+      text-[3rem]
+      font-poppins
+      font-bold
+    `}
   }
 `;

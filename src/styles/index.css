@@ -1,53 +1,54 @@
-:root {
-  /* const windowSize = {
-    'mb-xs': 'max-width: 300px',
-    'mb-s': 'max-width: 375px',
-    'mb-m': 'max-width: 480px',
-    'mb-l': 'max-width: 768px',
-    'lt-s': 'max-width: 1024px',
-    'lt-m': 'max-width: 1200px',
-    'lt-l': 'max-width: 1440px',
-  }; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  /* window size */
-  --window-mb-l: 'max-width: 768px';
-  --window-mb-m: 'max-width: 480px';
-  --window-mb-s: 'max-width: 375px';
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 100;
+  src: url('/public/fonts/Pretendard-Thin.woff') format('woff');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: normal;
+  src: url('/public/fonts/Pretendard-ExtraLight.woff') format('woff');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: bold;
+  src: url('/public/fonts/Pretendard-Bold.woff') format('woff');
+}
+/* 
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100;
+  src: url('/public/fonts/Montserrat-ExtraLight.ttf') format('truetype');
+}
 
-  /* font size */
-  --font-xs: '1.2rem';
-  --font-sm: '1.4rem';
-  --font-rg: '1.6rem';
-  --font-md: '1.8rem';
-  --font-lg: '2rem';
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: normal;
+  src: url('/public/fonts/Montserrat-Medium.ttf') format('truetype');
+} */
 
-  --color-main: #1a1a1a;
-  --color-main-text: #cacaca;
-  /* 
-    head: {
-      xs: '2.4rem',
-      sm: '2.8rem',
-      rg: '3.2rem',
-      md: '3.6rem',
-      lg: '4.2rem',
-      xl: '4.8rem',
-      ul: '5.6rem',
-    },
-  }; */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: normal;
+  src: url('/public/fonts/Poppins-Medium.ttf') format('truetype');
+}
 
-  /* const color = {
-    header: 'rgba(0,0,0,0.24)',
-    main: '#222',
-    secondBg: '#1D1D1D',
-    point: '#0ACDCE',
-    point80: '#0ACDCE80',
-    point40: '#0ACDCE40',
-    text_head: '#fff',
-    text: '#fffffff0',
-    text_2: '#ffffffca',
-    text_3: '#ddd',
-    text_4: '#ccc',
-    text_5: '#888',
-    text_6: '#666',
-  }; */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  src: url('/public/fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 900;
+  src: url('/public/fonts/Poppins-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cabinet';
+  font-weight: normal;
+  src: url('/public/fonts/CabinetGrotesk-Black.woff') format('truetype');
 }

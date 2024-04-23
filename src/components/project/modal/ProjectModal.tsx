@@ -1,39 +1,89 @@
-import React, { Dispatch } from 'react';
+import React, { Dispatch, useCallback } from 'react';
 import styled from 'styled-components';
-import { projectDetailProps } from '../../../types/types';
+import { projectDataProps } from '../../../types/types';
 import { createPortal } from 'react-dom';
 import StackList from '../../common/StackList';
+import tw from 'twin.macro';
+import { ThumbUrlProp } from '../../../types/styleTypes';
+import ProjectDetail from './ProjectDetail';
+import CloseIcon from '/public/image/svg/close.svg?react';
+import GithubIcon from '/public/image/svg/github.svg?react';
+import LinkIcon from '/public/image/svg/link.svg?react';
+import LinkButton from '../../common/LinkButton';
 
 interface ProjectModalProps {
-  detail: projectDetailProps;
+  detail: projectDataProps;
   setIsOpenModal: Dispatch<React.SetStateAction<boolean>>;
 }
-// && detail.id === projectId
+
 const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
-  // console.log(detail.id, projectId);
-  // team: '팀 프로젝트 ( 프론트엔드 3명 , 백엔드 3명 ) ',
-  // period: '2023.06.28 - 2023.07.24',
-  // stack: ['React', 'Redux-Toolkit', 'styled-components', 'Axios', 'MUI'],
-  // console.log('리렌더링');
+  const closeModal = useCallback(() => {
+    setIsOpenModal(false);
+  }, []);
+
   return (
     <>
       {createPortal(
         <>
-          <ModalBackground onClick={() => setIsOpenModal(false)} />
           <ModalContainer>
-            <DetailContent>
-              <h1>{detail.name}</h1>
-              <h2>{detail.subTitle}</h2>
-              <p>{detail.team}</p>
-              <p>{detail.period}</p>
-              <StackList stackData={detail.stack} />
-              <DetailImg src={detail.imgUrl[0]} />
+            <ModalBackground onClick={closeModal} />
 
-              <h3>Overview</h3>
-              <p>{detail.overview}</p>
-            </DetailContent>
+            <ContentWrap thumbUrl={detail.thumbImg}>
+              <button className="close_button" onClick={closeModal}>
+                <CloseIcon />
+              </button>
+
+              <div>
+                <ThumbContainer>
+                  <img src={detail.thumbImg} alt={`${detail.thumbImg} 대표 이미지`} />
+                </ThumbContainer>
+                <ProjectInfo>
+                  <h1>{detail.name}</h1>
+                  <p>{detail.subTitle}</p>
+                  <p>{detail.team}</p>
+                  <p>{detail.period}</p>
+                  <StackList stackData={detail.stack} />
+
+                  <ProjectLinks>
+                    <LinkButton link={detail.link.github}>
+                      <GithubIcon />
+                    </LinkButton>
+                    <LinkButton link={detail.link.deploy}>
+                      <LinkIcon />
+                    </LinkButton>
+                  </ProjectLinks>
+                </ProjectInfo>
+              </div>
+
+              <Details>
+                <ProjectDetail title="Overview">
+                  <Overview>{detail.overview}</Overview>
+                </ProjectDetail>
+                <ProjectDetail title="Contribution">
+                  <ContribList>
+                    {detail.contribs.map((contrib, idx) => {
+                      return <li key={idx}>{contrib}</li>;
+                    })}
+                  </ContribList>
+                </ProjectDetail>
+
+                <ProjectDetail title="구현 화면">
+                  <ScreenList>
+                    {detail.screen.map((screen, idx) => {
+                      return (
+                        <li key={idx}>
+                          <figure>
+                            <img src={screen.imgUrl} alt={`${screen.screenDesc} 구현 이미지`} />
+                            <figcaption>{screen.screenDesc}</figcaption>
+                          </figure>
+                        </li>
+                      );
+                    })}
+                  </ScreenList>
+                </ProjectDetail>
+              </Details>
+            </ContentWrap>
           </ModalContainer>
-          {/* </ModalBackground> */}
         </>,
         document.body
       )}
@@ -43,34 +93,167 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
 
 export default ProjectModal;
 const ModalContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 4rem;
-  /* width: 80vw;
-  min-height: 100vh; */
-  /* transform: translate(50%, 50%); */
-  background-color: #f3f3f3;
-  border-radius: 15px;
+  ${tw`  
+  fixed
+  top-0
+  bottom-0
+  left-0
+  right-0
+  overflow-y-auto
+  py-10
+  max-lg:p-0
+  lg:px-44
+  `}
 `;
+const ContentWrap = styled.article<ThumbUrlProp>`
+  ${tw`
+    relative
+    bg-[#242424]
+    w-full
+    z-50
+    py-10
+    max-lg:px-[10%]
+    lg:px-[15%]
+    lg:py-20
+  `}
+  &::before {
+    ${tw`
+      content-['']
+      absolute
+      w-full
+      h-[400px]
+      top-0
+      left-0
+      z-[-1]
+      opacity-20
+      // bg-gradient-to-b from-[#565656] to-transparent
+    `}
+    background-image:${({ thumbUrl }) =>
+      `linear-gradient(
+      to bottom,
+      rgba(34, 34, 34, 0) 10%,
+      rgba(34, 34, 34, 0.25) 25%,
+      rgba(34, 34, 34, 0.5) 50%,
+      rgba(34, 34, 34, 0.75) 75%,
+      rgba(34, 34, 34, 1) 100%
+    ),url(${thumbUrl});`};
+    background-size: cover;
+  }
+  .close_button {
+    ${tw`
+      absolute
+      top-4
+      right-4
+      w-4
+    `}
+  }
+`;
+const ProjectInfo = styled.div`
+  ${tw`
+    flex
+    flex-col
+    items-center
+    gap-4
+    pb-12
+    // px-40
+    font-thin
+  `}
 
-const DetailContent = styled.article`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  & > ul {
+    ${tw`
+        justify-center
+      `}
+  }
+
   & > h1 {
-    font-size: 3rem;
-  }
-  p {
-    white-space: pre-line;
+    ${tw`
+        text-[3rem]
+      `}
   }
 `;
 
-const DetailImg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
+const Details = styled.div`
+  ${tw`
+    flex
+    flex-col
+    gap-20
+  `}
+`;
+
+const Overview = styled.p`
+  ${tw`
+      leading-loose
+      whitespace-pre-line
+      px-8
+      pt-8
+    `}
+`;
+
+const ContribList = styled.ul`
+  ${tw`
+      px-8
+      pt-8
+  `}
+
+  & li {
+    ${tw`
+      list-disc
+      leading-[3rem]
+    `}
+
+    &::marker {
+      ${tw`
+        text-[#6c92af]
+      `}
+    }
+  }
+`;
+
+const ScreenList = styled.ul`
+  ${tw`
+    flex
+    flex-wrap
+    px-8
+    pt-8
+    max-md:flex-col
+  `}
+
+  & li {
+    ${tw`
+      w-1/2
+      p-4
+      max-md:w-full
+    `}
+
+    figure {
+      ${tw`
+          flex
+          flex-col
+          items-center
+        `}
+
+      & > figcaption {
+        ${tw`
+          text-gray
+        `}
+      }
+    }
+  }
+`;
+
+const ThumbContainer = styled.div`
+  ${tw` 
+    flex
+    justify-center
+    mb-12
+  `}
+
+  img {
+    ${tw` 
+      w-[50vw]
+      shadow-[4px_4px_10px_rgba(0, 0, 0, 0.3)]
+    `}
+  }
 `;
 
 const ModalBackground = styled.div`
@@ -80,6 +263,13 @@ const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
   backdrop-filter: blur(4px);
-  background-color: #000c;
-  /* opacity: 1; */
+  background-color: #000000ac;
+  z-index: -1;
+`;
+const ProjectLinks = styled.div`
+  ${tw` 
+    flex
+    // items-center
+    gap-5
+  `}
 `;
