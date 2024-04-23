@@ -11,9 +11,6 @@ const ProjectDetail = ({ children, title }: PContentProps) => {
   return (
     <Detailbox>
       <SubTitle>{title}</SubTitle>
-      {/* <h2>
-        {title}
-      </h2> */}
       {children}
     </Detailbox>
   );
@@ -22,14 +19,6 @@ const ProjectDetail = ({ children, title }: PContentProps) => {
 export default ProjectDetail;
 
 const Detailbox = styled.div`
-  ${tw`
-  // flex
-  // flex-col
-  // gap-12
-  // px-8
-  // py-12
-`}
-
   & > h2 {
     ${tw`
       text-[1.5rem]
@@ -39,10 +28,5 @@ const Detailbox = styled.div`
         text-point
       `}
     }
-    /* & span {
-      ${tw`
-        text-point
-      `}
-    } */
   }
 `;
