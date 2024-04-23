@@ -1,10 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
 
-// interface ScrollAnimationHookResult {
-//   isInViewport: boolean;
-//   ref: RefObject<HTMLDivElement>; // 이 부분은 사용하는 요소의 타입에 따라 조절해야 합니다.
-// }
-
 export const useScrollAnimation = () => {
   const [isInViewport, setIsInViewport] = useState<boolean>(true);
   const firstRef = useRef<HTMLElement | null>(null);

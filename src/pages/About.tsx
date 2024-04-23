@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Section as AboutSection } from '../styles/CommonStyle';
 import SectionTitle from '../components/common/SectionTitle';
-import { useGsapAboutCircle, useGsapAboutReveal } from '../hooks/useGsap';
+import { useGsapAboutCirclePath, useGsapAboutReveal } from '../hooks/useGsap';
 import useArrayRef from '../hooks/useArrayRef';
 import { useRef } from 'react';
 import ProfileImg from '../components/about/ProfileImg';
@@ -15,7 +15,7 @@ const About = () => {
   const [aboutRef, setAboutRef] = useArrayRef<HTMLDivElement>();
 
   useGsapAboutReveal(aboutRef);
-  useGsapAboutCircle(main);
+  useGsapAboutCirclePath(main);
 
   return (
     <AboutSection ref={main}>
@@ -45,7 +45,7 @@ const About = () => {
               지속적으로 배우고 도전하여 목표를 향해 나아가겠습니다.
             </div>
           </AboutMeContainer>
-          <TechList ref={setAboutRef} />
+          <TechList setAboutRef={setAboutRef} />
         </div>
       </AboutWrapper>
     </AboutSection>

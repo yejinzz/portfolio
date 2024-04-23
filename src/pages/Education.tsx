@@ -8,19 +8,19 @@ import { RefObject, useRef } from 'react';
 
 const Education = ({ LastRef }: { LastRef: React.ForwardedRef<HTMLElement> }) => {
   const projectRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-  const [headLineRef, setHeadLineRef] = useArrayRef<HTMLDivElement>();
+  const [eductionRef, setEducationRef] = useArrayRef<HTMLDivElement>();
 
-  useGsapEducation(headLineRef);
+  useGsapEducation(eductionRef);
 
   return (
     <EducationSection className="eduction" ref={LastRef}>
       <SectionTitle>Education.</SectionTitle>
       <EducationContainer ref={projectRef}>
-        <EducationItem className="eduction1" ref={setHeadLineRef}>
+        <EducationItem ref={setEducationRef}>
           <h1>코드스테이츠 프론트엔드 44기</h1>
           <p>2023-02 ~ 2023-08</p>
         </EducationItem>
-        <EducationItem ref={setHeadLineRef}>
+        <EducationItem ref={setEducationRef}>
           <h1>목원대학교</h1>
           <p>국제문화학과 전공</p>
           <p>마케팅빅데이터학과 복수전공</p>

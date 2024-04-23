@@ -5,7 +5,6 @@ import tw from 'twin.macro';
 
 const Social = ({ isInViewport }: { isInViewport: boolean }) => {
   const SocialRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-  console.log(isInViewport);
 
   useGsapSocialReveal(SocialRef, 6);
 
