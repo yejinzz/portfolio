@@ -7,8 +7,8 @@ import About from './pages/About';
 import Project from './pages/Project';
 import tw from 'twin.macro';
 import Education from './pages/Education';
-import { useScrollAnimation } from './hooks/useScrollAnimation';
 import Contact from './pages/Contact';
+import useMoveScroll from './hooks/useMoveScroll';
 
 const Noise = styled.div`
   ${tw`
@@ -26,19 +26,25 @@ const Noise = styled.div`
 `}
 `;
 const App = () => {
-  const { isInViewport, firstRef, LastRef } = useScrollAnimation();
+  const tabs = [
+    useMoveScroll('Home'),
+    useMoveScroll('About'),
+    useMoveScroll('Projects'),
+    useMoveScroll('Education'),
+    useMoveScroll('Contact'),
+  ];
 
   return (
     <main>
       <Noise />
       <PreLoader />
-      <Navbar />
-      <Social isInViewport={isInViewport} />
-      <Home firstRef={firstRef} />
-      <About />
-      <Project />
-      <Education LastRef={LastRef} />
-      <Contact LastRef={LastRef} />
+      <Navbar tabs={tabs} />
+      <Social />
+      <Home tabs={tabs} />
+      <About tabs={tabs} />
+      <Project tabs={tabs} />
+      <Education tabs={tabs} />
+      <Contact tabs={tabs} />
     </main>
   );
 };

@@ -3,28 +3,31 @@ import { Section as AboutSection } from '../styles/CommonStyle';
 import SectionTitle from '../components/common/SectionTitle';
 import { useGsapAboutCirclePath, useGsapAboutReveal } from '../hooks/useGsap';
 import useArrayRef from '../hooks/useArrayRef';
-import { useRef } from 'react';
+// import { useRef } from 'react';
 import ProfileImg from '../components/about/ProfileImg';
 import TechList from '../components/about/TechList';
 import Line from '/public/image/svg/path.svg?react';
 import tw from 'twin.macro';
 import SubTitle from '../components/common/SubTitle';
+import { TabsProps } from '../types/types';
 
-const About = () => {
-  const main = useRef<HTMLDivElement>(null);
-  const [aboutRef, setAboutRef] = useArrayRef<HTMLDivElement>();
+const About = ({ tabs }: { tabs: TabsProps[] }) => {
+  // const main = useRef<HTMLDivElement>(null);
+  const [aboutElRef, setAboutElRef] = useArrayRef<HTMLDivElement>();
 
-  useGsapAboutReveal(aboutRef);
-  useGsapAboutCirclePath(main);
+  useGsapAboutReveal(aboutElRef);
+  useGsapAboutCirclePath();
 
   return (
-    <AboutSection ref={main}>
+    <AboutSection className="about" ref={tabs[1].targetRef}>
       <SectionTitle>About</SectionTitle>
 
       <AboutWrapper>
-        <ProfileImg />
+        <div className="about__img">
+          <ProfileImg />
+        </div>
         <div>
-          <AboutMeContainer ref={setAboutRef}>
+          <AboutMeContainer ref={setAboutElRef}>
             <SubTitle>Introduction</SubTitle>
             <div className="About__desc">
               <strong>
@@ -45,7 +48,7 @@ const About = () => {
               지속적으로 배우고 도전하여 목표를 향해 나아가겠습니다.
             </div>
           </AboutMeContainer>
-          <TechList setAboutRef={setAboutRef} />
+          <TechList setAboutRef={setAboutElRef} />
         </div>
       </AboutWrapper>
     </AboutSection>
@@ -56,10 +59,17 @@ export default About;
 
 const AboutWrapper = styled.div`
   ${tw`
-    grid
-    gap-12
-    lg:grid-cols-2
+  flex
+  flex-col
+  justify-between
+  gap-12
+  lg:flex-row
   `}
+  .about__img {
+    ${tw`
+      flex-1
+    `}
+  }
 `;
 
 const AboutMeContainer = styled.div`
@@ -69,8 +79,9 @@ const AboutMeContainer = styled.div`
   `}
   .About__desc {
     ${tw`
-      mx-4
+      ml-4
       my-12
+      max-[425px]:ml-0
   `}
   }
   & strong {

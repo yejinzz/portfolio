@@ -4,18 +4,16 @@ import { Section as EducationSection } from '../styles/CommonStyle';
 import tw from 'twin.macro';
 import useArrayRef from '../hooks/useArrayRef';
 import { useGsapEducation } from '../hooks/useGsap';
-import { RefObject, useRef } from 'react';
+import { TabsProps } from '../types/types';
 
-const Education = ({ LastRef }: { LastRef: React.ForwardedRef<HTMLElement> }) => {
-  const projectRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+const Education = ({ tabs }: { tabs: TabsProps[] }) => {
   const [eductionRef, setEducationRef] = useArrayRef<HTMLDivElement>();
-
   useGsapEducation(eductionRef);
 
   return (
-    <EducationSection className="eduction" ref={LastRef}>
-      <SectionTitle>Education.</SectionTitle>
-      <EducationContainer ref={projectRef}>
+    <EducationSection className="eduction" ref={tabs[3].targetRef}>
+      <SectionTitle>Education</SectionTitle>
+      <EducationContainer>
         <EducationItem ref={setEducationRef}>
           <h1>코드스테이츠 프론트엔드 44기</h1>
           <p>2023-02 ~ 2023-08</p>
@@ -36,9 +34,10 @@ export default Education;
 const EducationContainer = styled.div`
   ${tw`
     flex
-    // justify-between
-    // gap-20
-    mb-20
+    // mb-10
+    flex-col
+    gap-4
+    md:flex-row
   `}
 `;
 
@@ -50,6 +49,8 @@ const EducationItem = styled.div`
     border-point
     pl-5
     py-3
+    mb-10
+    md:m-0
 `}
   &> h1 {
     ${tw`

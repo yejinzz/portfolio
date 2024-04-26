@@ -5,14 +5,16 @@ import TextCircle from '../components/home/TextCircle';
 import useArrayRef from '../hooks/useArrayRef';
 import { useGsapHeadLineReveal } from '../hooks/useGsap';
 import tw from 'twin.macro';
+// import { ForwardedRef } from 'react';
+import { TabsProps } from '../types/types';
 
-const Home = ({ firstRef }: { firstRef: React.ForwardedRef<HTMLElement> }) => {
+const Home = ({ tabs }: { tabs: TabsProps[] }) => {
   const [headLineRef, setHeadLineRef] = useArrayRef<HTMLHeadingElement | HTMLParagraphElement>();
 
   useGsapHeadLineReveal(headLineRef);
-
+  // console.log(tabs[0].isTarget);
   return (
-    <HomeSection ref={firstRef}>
+    <HomeSection ref={tabs[0].targetRef}>
       <HomeContent>
         <TextCircle>FRONT-END DEVELOPER </TextCircle>
         <HeadLine>
@@ -56,7 +58,7 @@ const HeadLine = styled.div`
 
   & > h1 {
     ${tw`
-      text-[5rem]
+      text-[4rem]
       sm:text-[8rem]
     `}
   }

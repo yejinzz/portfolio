@@ -17,4 +17,11 @@ export interface projectDataProps {
   screen: { imgUrl: string; screenDesc: string }[];
 }
 
+export interface TabsProps {
+  targetRef: React.RefObject<HTMLElement>;
+  onMoveToTarget: () => void;
+  targetName: string;
+  // isTarget: boolean;
+}
+
 export type SetRefType<T extends HTMLElement> = React.RefObject<T> | ((instance: T | null) => void);

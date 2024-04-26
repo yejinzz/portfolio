@@ -4,10 +4,11 @@ import SectionTitle from '../components/common/SectionTitle';
 import { ProjectData } from '../data/projectData';
 import ProjectItem from '../components/project/ProjectItem';
 import tw from 'twin.macro';
+import { TabsProps } from '../types/types';
 
-const Project = () => {
+const Project = ({ tabs }: { tabs: TabsProps[] }) => {
   return (
-    <ProjectSection>
+    <ProjectSection ref={tabs[2].targetRef}>
       <SectionTitle>Projects</SectionTitle>
       <ProjectWrapper>
         {ProjectData.map((data, idx) => (
