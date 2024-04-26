@@ -101,6 +101,7 @@ const ModalContainer = styled.div`
   right-0
   overflow-y-auto
   py-10
+  z-10
   max-lg:p-0
   lg:px-44
   `}
@@ -110,11 +111,11 @@ const ContentWrap = styled.article<ThumbUrlProp>`
     relative
     bg-[#242424]
     w-full
-    z-50
     py-10
     max-lg:px-[10%]
     lg:px-[15%]
     lg:py-20
+    // z-0
   `}
   &::before {
     ${tw`
@@ -124,7 +125,7 @@ const ContentWrap = styled.article<ThumbUrlProp>`
       h-[400px]
       top-0
       left-0
-      z-[-1]
+      // z-
       opacity-20
     `}
     background-image:${({ thumbUrl }) =>
@@ -166,6 +167,7 @@ const ProjectInfo = styled.div`
   & > h1 {
     ${tw`
         text-[3rem]
+        text-center
       `}
   }
 `;
@@ -196,7 +198,8 @@ const ContribList = styled.ul`
   & li {
     ${tw`
       list-disc
-      leading-[3rem]
+      leading-[2rem]
+      mb-6
     `}
 
     &::marker {
@@ -229,10 +232,18 @@ const ScreenList = styled.ul`
           flex-col
           items-center
         `}
+      & > img {
+        ${tw`
+          border
+          border-solid 
+          border-gray50
+        `}
+      }
 
       & > figcaption {
         ${tw`
           text-gray
+          
         `}
       }
     }
@@ -250,6 +261,7 @@ const ThumbContainer = styled.div`
     ${tw` 
       w-[50vw]
       shadow-[4px_4px_10px_rgba(0, 0, 0, 0.3)]
+      z-1
     `}
   }
 `;
@@ -263,7 +275,6 @@ const ModalBackground = styled.div`
       h-full
       backdrop-blur-[4px]
       bg-[#000000ac]
-      z-0
     `}
 `;
 const ProjectLinks = styled.div`

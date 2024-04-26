@@ -21,16 +21,16 @@
 @font-face {
   font-family: 'Poppins';
   font-weight: normal;
-  src: url('/public/fonts/Poppins-Medium.ttf') format('truetype');
+  src: url('/public/fonts/Poppins-Light.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Poppins';
   font-weight: 700;
-  src: url('/public/fonts/Poppins-Bold.ttf') format('truetype');
+  src: url('/public/fonts/Poppins-Bold.woff') format('woff');
 }
 @font-face {
   font-family: 'Poppins';
   font-weight: 900;
-  src: url('/public/fonts/Poppins-ExtraBold.ttf') format('truetype');
+  src: url('/public/fonts/Poppins-ExtraBold.woff') format('woff');
 }

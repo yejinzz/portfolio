@@ -27,8 +27,8 @@ const StackItem = styled.li`
     py-2
     border
     border-solid 
-    rounded-[20px]
     border-[#6c92af]
+    rounded-[20px]
     text-[#6c92af]
   `}
 `;

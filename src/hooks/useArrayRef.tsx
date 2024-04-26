@@ -12,7 +12,7 @@ const useArrayRef = <T extends HTMLElement>() => {
     if (ref) {
       elementsRef.current.push(ref);
     }
-    console.log(elementsRef.current);
+    // console.log(elementsRef.current);
   }, []);
 
   return [elementsRef, setElementRef] as const;

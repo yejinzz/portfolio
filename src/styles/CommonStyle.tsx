@@ -6,11 +6,11 @@ const Section = styled.section`
   // flex
   relative
   max-w-[1440px]
-  p-16
+  p-12
   my-0
   mx-auto
-  // flex-col
   overflow-hidden
+  md:p-16
 `}
 `;
 

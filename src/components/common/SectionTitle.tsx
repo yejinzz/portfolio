@@ -23,7 +23,7 @@ export default SectionTitle;
 
 const Title = styled.h1`
   ${tw`
-    my-[5rem]
+    mb-[5rem]
     w-full
   `}
   &> span:first-child {

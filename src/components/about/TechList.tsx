@@ -37,8 +37,9 @@ const TechListContainer = styled.div`
       flex
       flex-col
       gap-[1rem]
-      mx-[1rem]
+      ml-[1rem]
       my-[2rem]
+      max-[425px]:ml-0
     `}
   }
 

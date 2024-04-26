@@ -62,6 +62,7 @@ export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
         },
         scrollTrigger: {
           trigger: items.current,
+          toggleActions: 'restart none play none',
         },
       }
     );
@@ -147,7 +148,7 @@ export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: numbe
     );
   }, []);
 };
-export const useGsapAboutCirclePath = (trigger: RefObject<HTMLElement>) => {
+export const useGsapAboutCirclePath = () => {
   useGSAP(() => {
     const el: SVGPathElement | null = document.querySelector('#path_line') as SVGPathElement | null;
 
@@ -159,35 +160,17 @@ export const useGsapAboutCirclePath = (trigger: RefObject<HTMLElement>) => {
       gsap.to('#path_line', {
         strokeDashoffset: 0,
         duration: 1.5,
-        delay: 2,
+        delay: 0.5,
         scrollTrigger: {
-          trigger: trigger.current,
+          trigger: '.about',
           start: 'top 10%',
           end: 'bottom bottom',
-          toggleActions: 'play none play reverse',
+          toggleActions: 'restart none play none',
         },
       });
     }
   }, []);
 };
-
-// export const useGsapBackGroundCircle = (items: RefObject<HTMLDivElement[]>, delay: number = 0) => {
-//   useGSAP(() => {
-//     // const el = items.map((item) => item.current);
-//     tl.fromTo(
-//       items.current,
-//       { autoAlpha: 0, scale: 0 },
-//       {
-//         autoAlpha: 0.8,
-//         scale: 1,
-//         duration: 1,
-//         delay,
-//         ease: 'power4.out',
-//         stagger: 0.5,
-//       }
-//     );
-//   }, []);
-// };
 
 export const useGsapProjectReveal = (
   left: RefObject<HTMLElement>,
@@ -235,7 +218,7 @@ export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
       {
         autoAlpha: 1,
         y: 0,
-        duration: 1,
+        duration: 2,
         // delay: 0.1,
         ease: 'power4.out',
         stagger: 0.4,
