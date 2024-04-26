@@ -1,9 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 import tw from 'twin.macro';
+import { SetRefType } from '../../types/types';
 
-const TextAnimation = ({ children }: { children: string }) => {
+interface TextAnimationProps {
+  children: string;
+  setRef?: SetRefType<HTMLDivElement>;
+}
+
+const TextAnimation = ({ children, setRef }: TextAnimationProps) => {
   return (
-    <TextContainer>
+    <TextContainer ref={setRef}>
       {children.split('').map((el, idx) => (
         <span key={el + idx}>{el}</span>
       ))}

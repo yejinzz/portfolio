@@ -7,8 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const tl = gsap.timeline();
 export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
-  // const tl = gsap.timeline();
-
   useGSAP(() => {
     tl.from(items.current, {
       opacity: 0,
@@ -35,7 +33,6 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
           duration: 1.5,
           height: '0vh',
           ease: 'Power3.easeOut',
-          // onComplete: mobileLanding,
         },
         '-=2'
       )
@@ -48,8 +45,6 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
 
 export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
   useGSAP(() => {
-    // console.log(items);
-
     gsap.fromTo(
       items.current,
       {
@@ -60,7 +55,6 @@ export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
         autoAlpha: 1,
         y: 0,
         duration: 1,
-        // delay: 1,
         ease: 'circ.out',
         stagger: {
           amount: 1,
@@ -68,34 +62,42 @@ export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
         },
         scrollTrigger: {
           trigger: items.current,
+          toggleActions: 'restart none play none',
         },
       }
     );
   }, []);
 };
 
-export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
-  ScrollTrigger.refresh();
+export const useGsapNavReveal = (items: RefObject<HTMLLIElement[]>, delay: number = 0) => {
   useGSAP(() => {
-    // console.log(items);
-
     gsap.fromTo(
       items.current,
-      { autoAlpha: 0, y: 100 },
+      { autoAlpha: 0, y: 50 },
       {
         autoAlpha: 1,
         y: 0,
-        duration: 1,
-        // delay: 0.1,
+        duration: 2,
+        delay,
         ease: 'power4.out',
-        stagger: 0.4,
-        scrollTrigger: {
-          trigger: '.eduction',
-          start: 'top center',
-          end: 'bottom center',
-          markers: true,
-          toggleActions: 'restart none none reverse',
-        },
+        stagger: 0.2,
+      }
+    );
+  }, []);
+};
+
+export const useGsapSocialReveal = (el: RefObject<HTMLElement>, delay: number = 0) => {
+  useGSAP(() => {
+    gsap.fromTo(
+      el.current,
+      {
+        x: -500,
+      },
+      {
+        x: 0,
+        duration: 1,
+        delay,
+        ease: 'power4.out',
       }
     );
   }, []);
@@ -103,9 +105,6 @@ export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
 
 export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
   useGSAP(() => {
-    // const el = items.map((item) => item.current);
-    console.log(items);
-
     tl.fromTo(
       items.current,
       {
@@ -143,15 +142,13 @@ export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: numbe
         scrollTrigger: {
           trigger: items.current,
           start: 'top center',
-          // end: 'bottom bottom',
-          // markers: true,
           toggleActions: 'play none none reverse',
         },
       }
     );
   }, []);
 };
-export const useGsapAboutCircle = (trigger: RefObject<HTMLElement>) => {
+export const useGsapAboutCirclePath = () => {
   useGSAP(() => {
     const el: SVGPathElement | null = document.querySelector('#path_line') as SVGPathElement | null;
 
@@ -163,70 +160,15 @@ export const useGsapAboutCircle = (trigger: RefObject<HTMLElement>) => {
       gsap.to('#path_line', {
         strokeDashoffset: 0,
         duration: 1.5,
-        delay: 2,
+        delay: 0.5,
         scrollTrigger: {
-          trigger: trigger.current,
+          trigger: '.about',
           start: 'top 10%',
           end: 'bottom bottom',
-          toggleActions: 'play none play reverse',
+          toggleActions: 'restart none play none',
         },
       });
     }
-  }, []);
-};
-
-export const useGsapBackGroundCircle = (items: RefObject<HTMLDivElement[]>, delay: number = 0) => {
-  useGSAP(() => {
-    // const el = items.map((item) => item.current);
-    tl.fromTo(
-      items.current,
-      { autoAlpha: 0, scale: 0 },
-      {
-        autoAlpha: 0.8,
-        scale: 1,
-        duration: 1,
-        delay,
-        ease: 'power4.out',
-        stagger: 0.5,
-      }
-    );
-  }, []);
-};
-
-export const useGsapNavReveal = (items: RefObject<HTMLLIElement[]>, delay: number = 0) => {
-  useGSAP(() => {
-    console.log(items);
-
-    // const el = items.map((item) => item.current);
-    gsap.fromTo(
-      items.current,
-      { autoAlpha: 0, y: 50 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: 2,
-        delay,
-        ease: 'power4.out',
-        stagger: 0.2,
-      }
-    );
-  }, []);
-};
-
-export const useGsapSocialReveal = (el: RefObject<HTMLElement>, delay: number = 0) => {
-  useGSAP(() => {
-    gsap.fromTo(
-      el.current,
-      {
-        x: -500,
-      },
-      {
-        x: 0,
-        duration: 1,
-        delay,
-        ease: 'power4.out',
-      }
-    );
   }, []);
 };
 
@@ -236,9 +178,8 @@ export const useGsapProjectReveal = (
   trigger: RefObject<HTMLElement>
 ) => {
   ScrollTrigger.refresh();
-  useGSAP(() => {
-    console.log(left, right, trigger);
 
+  useGSAP(() => {
     const tlProject = gsap.timeline({
       scrollTrigger: {
         trigger: trigger.current,
@@ -265,5 +206,52 @@ export const useGsapProjectReveal = (
         },
         0.1
       );
+  }, []);
+};
+
+export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
+  ScrollTrigger.refresh();
+  useGSAP(() => {
+    gsap.fromTo(
+      items.current,
+      { autoAlpha: 0, y: 100 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 2,
+        // delay: 0.1,
+        ease: 'power4.out',
+        stagger: 0.4,
+        scrollTrigger: {
+          trigger: '.eduction',
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'restart none none reverse',
+        },
+      }
+    );
+  }, []);
+};
+
+export const useGsapContact = (items: RefObject<HTMLElement[]>) => {
+  ScrollTrigger.refresh();
+  useGSAP(() => {
+    gsap.fromTo(
+      items.current,
+      { autoAlpha: 0 },
+      {
+        autoAlpha: 1,
+        duration: 2,
+        // delay: 0.1,
+        ease: 'power4.out',
+        stagger: 0.6,
+        scrollTrigger: {
+          trigger: '.contact',
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'restart none none reverse',
+        },
+      }
+    );
   }, []);
 };

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import { ChildrenProps } from '../../types/types';
 
-interface LinkButtonProps {
-  children: React.ReactNode;
+interface LinkButtonProps extends ChildrenProps {
   link: string;
   name?: string | null;
 }

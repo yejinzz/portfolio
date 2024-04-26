@@ -16,13 +16,15 @@ const SubTitleContainer = styled.h2`
   ${tw`
     overflow-hidden
     font-poppins
+    
+    max-[425px]:text-center
   `}
 
   .sub_title {
     ${tw`
       relative
       tracking-[7px]
-      text-[1.5rem]
+      text-[1.4rem]
       uppercase
       font-bold
     `}
@@ -36,6 +38,7 @@ const SubTitleContainer = styled.h2`
         content-['']
         ml-6
         bg-gray
+        max-[425px]:hidden
       `}
     }
   }

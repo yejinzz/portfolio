@@ -1,10 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-interface StackListProps {
-  stackData: string[];
-}
-const StackList = ({ stackData }: StackListProps) => {
+
+const StackList = ({ stackData }: { stackData: string[] }) => {
   return (
     <StackListContainer>
       {stackData.map((item, idx) => (
@@ -30,8 +27,8 @@ const StackItem = styled.li`
     py-2
     border
     border-solid 
-    rounded-[20px]
     border-[#6c92af]
+    rounded-[20px]
     text-[#6c92af]
   `}
 `;

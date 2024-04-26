@@ -24,12 +24,27 @@ export default TextCircle;
 
 const Circle = styled.div`
   ${tw`
-    w-[150px] h-[150px] absolute -top-5 -right-5 animate-rotateText 
+    w-[120px]
+    h-[120px]
+    absolute
+    top-0
+    right-0
+    animate-rotateText 
+    z-[-1]
+    md:w-[150px]
+    md:h-[150px]
   `}
 `;
 const CircleText = styled.span<CircleTextProps>`
   ${tw`
-    absolute left-[75px] origin-[0_75px] uppercase text-[0.8rem] font-thin 
+    absolute
+    left-[60px]
+    origin-[0_60px]
+    uppercase
+    text-[0.8rem]
+    font-thin 
+    md:left-[75px]
+    md:origin-[0_75px]
   `}
   transform: ${({ deg }) => `rotate(${deg}deg)`};
 `;

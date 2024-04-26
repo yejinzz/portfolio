@@ -1,19 +1,14 @@
 import styled from 'styled-components';
 import { projectDataProps } from '../../types/types';
 import { useGsapProjectReveal } from '../../hooks/useGsap';
-import { RefObject, memo, useCallback, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import MoreViewBtn from './button/MoreViewBtn';
 import StackList from '../common/StackList';
 import tw from 'twin.macro';
 import ProjectModal from './modal/ProjectModal';
 import { ProjectData } from '../../data/projectData';
 
-interface ProjectListItemProps {
-  data: projectDataProps;
-  // onClickMoreView: (id: number) => void;
-}
-
-const ProjectItem = memo(({ data }: ProjectListItemProps) => {
+const ProjectItem = ({ data }: { data: projectDataProps }) => {
   const [projectId, setProjectId] = useState<number>(0);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
@@ -31,6 +26,14 @@ const ProjectItem = memo(({ data }: ProjectListItemProps) => {
     [setIsOpenModal, setProjectId]
   );
 
+  useEffect(() => {
+    if (isOpenModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpenModal]);
+
   return (
     <>
       {isOpenModal &&
@@ -40,7 +43,7 @@ const ProjectItem = memo(({ data }: ProjectListItemProps) => {
 
       <ProjectItemContainer ref={projectRef}>
         <div className="flex-1" ref={projectLeftRef}>
-          <img src={data.thumbImg} alt={data.name} />
+          <img src={data.thumbImg} alt={data.name} loading="lazy" />
         </div>
         <ProjectDescBox ref={projectRightRef}>
           <h2>{`0${data.id}`}</h2>
@@ -53,7 +56,7 @@ const ProjectItem = memo(({ data }: ProjectListItemProps) => {
       </ProjectItemContainer>
     </>
   );
-});
+};
 
 export default ProjectItem;
 
@@ -81,6 +84,7 @@ const ProjectItemContainer = styled.div`
 const ProjectDescBox = styled.div`
   ${tw`
     flex-1
+    // relativex/
     flex
     flex-col
     gap-4
@@ -89,14 +93,13 @@ const ProjectDescBox = styled.div`
     ${tw`
       absolute
       -top-12
-      left-0
+      -left-4
       gap-4
       w-full
       text-[4.5rem]
       text-gray50
-      md:text-[6rem]
-      md:-top-16
-      md:-left-4
+      z-[-1]
+      lg:text-[5rem]
     `}
   }
   > h3 {
@@ -104,8 +107,7 @@ const ProjectDescBox = styled.div`
       gap-4
       w-full
       text-[2.5rem]
-      z-10
-      md:text-[3.5rem]
+      lg:text-[3.5rem]
     `}
   }
 `;

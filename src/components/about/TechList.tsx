@@ -1,13 +1,14 @@
-import { forwardRef } from 'react';
 import styled from 'styled-components';
 import SubTitle from '../common/SubTitle';
 import { StackData } from '../../data/aboutData';
 import tw from 'twin.macro';
 import { StackProps } from '../../types/styleTypes';
+import { SetRefType } from '../../types/types';
+// type SetRefType = React.RefObject<HTMLDivElement> | ((instance: HTMLDivElement | null) => void);
 
-const TechList = forwardRef<HTMLDivElement>((props, ref) => {
+const TechList = ({ setAboutRef }: { setAboutRef: SetRefType<HTMLDivElement> }) => {
   return (
-    <TechListContainer ref={ref}>
+    <TechListContainer ref={setAboutRef}>
       <SubTitle>Tech Stack</SubTitle>
       <div className="Tech__list-container">
         {Object.entries(StackData.stacks).map(([key, stack], idx) => (
@@ -26,7 +27,7 @@ const TechList = forwardRef<HTMLDivElement>((props, ref) => {
       </div>
     </TechListContainer>
   );
-});
+};
 
 export default TechList;
 
@@ -36,8 +37,9 @@ const TechListContainer = styled.div`
       flex
       flex-col
       gap-[1rem]
-      mx-[1rem]
+      ml-[1rem]
       my-[2rem]
+      max-[425px]:ml-0
     `}
   }
 

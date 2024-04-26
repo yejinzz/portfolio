@@ -8,11 +8,11 @@ const useArrayRef = <T extends HTMLElement>() => {
     elementsRef.current = [];
   }, []);
 
-  const setElementRef = useCallback((ref: T) => {
+  const setElementRef = useCallback((ref: T | null) => {
     if (ref) {
       elementsRef.current.push(ref);
     }
-    console.log(elementsRef.current);
+    // console.log(elementsRef.current);
   }, []);
 
   return [elementsRef, setElementRef] as const;

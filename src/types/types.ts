@@ -1,26 +1,5 @@
-export interface PlcardProps {
-  playListId: number;
-  memberId: number;
-  createMember: string;
-  title: string;
-  coverImg: string;
-  tags: [];
-  likeCount: number;
-  body: string;
-  createdAt: string;
-  modifiedAt: string;
-}
-
 export interface ChildrenProps {
   children: React.ReactNode;
-}
-
-export type UrlProps = {
-  url: string;
-};
-
-export interface ICheckBoxProps {
-  setSectionRef?: (ref: HTMLElement) => void; // 타입 지정
 }
 
 export interface projectDataProps {
@@ -38,18 +17,11 @@ export interface projectDataProps {
   screen: { imgUrl: string; screenDesc: string }[];
 }
 
-// export type projectDetailProps = {
-//   id: number;
-//   name: string;
-//   subTitle: string;
-//   overview: string;
-//   period: string;
-//   team: string;
-//   stack: string[];
-//   featinfo: string[];
-//   contribs: {
-//     title: string;
-//     description: string;
-//   }[];
-//   imgUrl: string[];
-// };
+export interface TabsProps {
+  targetRef: React.RefObject<HTMLElement>;
+  onMoveToTarget: () => void;
+  targetName: string;
+  // isTarget: boolean;
+}
+
+export type SetRefType<T extends HTMLElement> = React.RefObject<T> | ((instance: T | null) => void);
