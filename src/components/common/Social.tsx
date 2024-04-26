@@ -1,5 +1,5 @@
 import { RefObject, useRef } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { useGsapSocialReveal } from '../../hooks/useGsap';
 import tw from 'twin.macro';
 // { isInViewport }: { isInViewport: boolean }
@@ -10,7 +10,6 @@ const Social = () => {
 
   return (
     <SocialContainer ref={SocialRef}>
-      {/* { isInViewport }: { isInViewport: boolean } */}
       <span>Github</span>
       <div className="vertical-line" />
       <span>Velog</span>
@@ -19,22 +18,6 @@ const Social = () => {
 };
 
 export default Social;
-const fadeInAnimation = keyframes`
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-`;
-const fadeOutAnimation = keyframes`
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-`;
 
 const SocialContainer = styled.div`
   ${tw`
@@ -48,15 +31,6 @@ const SocialContainer = styled.div`
   text-lg
   max-md:hidden
 `}
-
-  /* animation: ${(props) =>
-    props.isInViewport
-      ? css`
-          ${fadeInAnimation} 0.8s forwards
-        `
-      : css`
-          ${fadeOutAnimation} 0.3s forwards
-        `};*/
   transform-origin: left top;
   transform: rotate(-90deg) translateX(-50%);
   .vertical-line {
