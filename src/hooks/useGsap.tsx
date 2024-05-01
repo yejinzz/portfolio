@@ -6,10 +6,11 @@ import { RefObject } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 const tl = gsap.timeline();
+
 export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
   useGSAP(() => {
     tl.from(items.current, {
-      opacity: 0,
+      // opacity: 0,
       y: 120,
       skewY: 50,
       stagger: 0.1,
@@ -124,7 +125,7 @@ export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: nu
 };
 
 export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
-  ScrollTrigger.refresh();
+  // ScrollTrigger.refresh();
   useGSAP(() => {
     gsap.fromTo(
       items.current,
@@ -177,7 +178,7 @@ export const useGsapProjectReveal = (
   right: RefObject<HTMLElement>,
   trigger: RefObject<HTMLElement>
 ) => {
-  ScrollTrigger.refresh();
+  // ScrollTrigger.refresh();
 
   useGSAP(() => {
     const tlProject = gsap.timeline({
@@ -210,7 +211,7 @@ export const useGsapProjectReveal = (
 };
 
 export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
-  ScrollTrigger.refresh();
+  // ScrollTrigger.refresh();
   useGSAP(() => {
     gsap.fromTo(
       items.current,
@@ -234,7 +235,7 @@ export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
 };
 
 export const useGsapContact = (items: RefObject<HTMLElement[]>) => {
-  ScrollTrigger.refresh();
+  // ScrollTrigger.refresh();
   useGSAP(() => {
     gsap.fromTo(
       items.current,

@@ -39,17 +39,18 @@ const PreLoaderContainer = styled.div`
 
 const PreLoaderText = styled.div`
   ${tw`
-    h-[3.3rem]
+   
     overflow-hidden
-    text-[3rem]
     font-poppins
+    text-[3rem]
+    h-[3.3rem]
     md:h-[5.6rem]
     md:text-[5rem]
   `}
   span {
     ${tw`
       inline-block
-      text-white
+      // block
     `}
   }
 `;

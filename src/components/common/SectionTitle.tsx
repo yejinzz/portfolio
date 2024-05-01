@@ -35,8 +35,6 @@ const Title = styled.h1`
     ${tw`
       inline-block
       text-[3rem]
-      font-poppins
-      font-bold
     `}
   }
 `;

@@ -18,7 +18,7 @@ const TechList = ({ setAboutRef }: { setAboutRef: SetRefType<HTMLDivElement> }) 
             <ul>
               {stack.map((item, itemIdx) => (
                 <StackItem key={itemIdx} aria-label={`${item}`} stack={item}>
-                  <img className="About__tech-icon" src={`/tech/${item}.svg`} alt={item} />
+                  <img className="About__tech-icon" src={`/tech/${item}.svg`} alt={item} loading="lazy" />
                 </StackItem>
               ))}
             </ul>
@@ -86,8 +86,8 @@ const StackItem = styled.li<StackProps>`
   &::before {
     ${tw`
       absolute
-      top-0
-      left-0
+    //   translate-x-0
+    // translate-y-0
       w-full
       h-full
       text-center

@@ -15,7 +15,6 @@ export default SubTitle;
 const SubTitleContainer = styled.h2`
   ${tw`
     overflow-hidden
-    font-poppins
     
     max-[425px]:text-center
   `}
@@ -26,7 +25,6 @@ const SubTitleContainer = styled.h2`
       tracking-[7px]
       text-[1.4rem]
       uppercase
-      font-bold
     `}
     &::after {
       ${tw`

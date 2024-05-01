@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: 'Pretendard','sans-serif';
-    /* font-size: 1.4rem; */
     background-color:#222;
     color: #fff;
     /* overflow-y: hidden; */

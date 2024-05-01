@@ -1,13 +1,14 @@
-import PreLoader from './components/PreLoader';
 import styled from 'styled-components';
+import tw from 'twin.macro';
+import PreLoader from './components/PreLoader';
 import Navbar from './components/common/Navbar';
 import Social from './components/common/Social';
 import Home from './pages/Home';
 import About from './pages/About';
 import Project from './pages/Project';
-import tw from 'twin.macro';
 import Education from './pages/Education';
 import Contact from './pages/Contact';
+
 import useMoveScroll from './hooks/useMoveScroll';
 
 const Noise = styled.div`
@@ -19,11 +20,9 @@ const Noise = styled.div`
     bg-main
     bg-auto
     opacity-[0.03]
-    top-0
-    right-0
-    bottom-0
-    left-0
-`}
+    translate-x-0
+    translate-y-0
+`}/* transform: translate(0,0); */
 `;
 const App = () => {
   const tabs = [

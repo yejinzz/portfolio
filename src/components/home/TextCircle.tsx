@@ -42,7 +42,6 @@ const CircleText = styled.span<CircleTextProps>`
     origin-[0_60px]
     uppercase
     text-[0.8rem]
-    font-thin 
     md:left-[75px]
     md:origin-[0_75px]
   `}

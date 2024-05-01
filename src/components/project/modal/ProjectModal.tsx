@@ -73,7 +73,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                       return (
                         <li key={idx}>
                           <figure>
-                            <img src={screen.imgUrl} alt={`${screen.screenDesc} 구현 이미지`} />
+                            <img src={screen.imgUrl} alt={`${screen.screenDesc} 구현 이미지`} loading="lazy" />
                             <figcaption>{screen.screenDesc}</figcaption>
                           </figure>
                         </li>
@@ -155,7 +155,6 @@ const ProjectInfo = styled.div`
     items-center
     gap-4
     pb-12
-    font-thin
   `}
 
   & > ul {
