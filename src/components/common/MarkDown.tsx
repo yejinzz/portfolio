@@ -1,19 +1,12 @@
-// import { ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-// import type { CodeComponent } from 'react-markdown/src/ast-to-react'
-// type CodeProps = Parameters<CodeComponent>[0]
+import { useRef } from 'react';
 
-// interface CodeProps {
-//   node?: ReactNode;
-//   inline?: any;
-//   className?: string;
-//   children?: React.ReactNode;
-// }
 const Markdown = ({ children }: { children: string }) => {
+  const ref = useRef<SyntaxHighlighter>(null);
   return (
     <CustomMarkdown
       children={children}
@@ -30,9 +23,10 @@ const Markdown = ({ children }: { children: string }) => {
               children={String(children).replace(/\n$/, '')}
               language={match[1]}
               style={dracula}
+              ref={ref}
             />
           ) : (
-            // 사용된 언어를 따로 적지 않거나 적합하지 않을 경우
+            // 사용된 언어를 명시하지 않거나 적합하지 않을 경우
             <code {...rest} className={className}>
               {children}
             </code>
