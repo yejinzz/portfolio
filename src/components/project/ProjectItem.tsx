@@ -43,11 +43,11 @@ const ProjectItem = ({ data }: { data: projectDataProps }) => {
 
       <ProjectItemContainer ref={projectRef}>
         <div className="flex-1" ref={projectLeftRef}>
-          <img src={data.thumbImg} alt={data.name} loading="lazy" />
+          <img src={data.thumbImg} alt={data.title} loading="lazy" />
         </div>
         <ProjectDescBox ref={projectRightRef}>
           <h2>{`0${data.id}`}</h2>
-          <h3>{data.name}</h3>
+          <h3>{data.title}</h3>
           <p>{data.period}</p>
           <p>{data.subTitle}</p>
           <StackList stackData={data.stack} />

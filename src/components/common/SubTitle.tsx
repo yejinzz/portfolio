@@ -22,7 +22,7 @@ const SubTitleContainer = styled.h2`
   .sub_title {
     ${tw`
       relative
-      tracking-[7px]
+      tracking-[5px]
       text-[1.4rem]
       uppercase
     `}

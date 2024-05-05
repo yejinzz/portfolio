@@ -10,7 +10,7 @@ const tl = gsap.timeline();
 export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
   useGSAP(() => {
     tl.from(items.current, {
-      // opacity: 0,
+      opacity: 0,
       y: 120,
       skewY: 50,
       stagger: 0.1,

@@ -10,6 +10,7 @@ import CloseIcon from '/public/image/svg/icon/close.svg?react';
 import GithubIcon from '/public/image/svg/icon/github.svg?react';
 import LinkIcon from '/public/image/svg/icon/link.svg?react';
 import LinkButton from '../../common/LinkButton';
+import Markdown from '../../common/MarkDown';
 
 interface ProjectModalProps {
   detail: projectDataProps;
@@ -38,7 +39,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                   <img src={detail.thumbImg} alt={`${detail.thumbImg} 대표 이미지`} />
                 </ThumbContainer>
                 <ProjectInfo>
-                  <h1>{detail.name}</h1>
+                  <h1>{detail.title}</h1>
                   <p>{detail.subTitle}</p>
                   <p>{detail.team}</p>
                   <p>{detail.period}</p>
@@ -57,18 +58,47 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
 
               <Details>
                 <ProjectDetailBox title="Overview">
-                  <Overview>{detail.overview}</Overview>
+                  <Overview>
+                    <Markdown>{detail.overview}</Markdown>
+                  </Overview>
                 </ProjectDetailBox>
                 <ProjectDetailBox title="Contribution">
-                  <ContribList>
+                  <ContribListWrap>
                     {detail.contribs.map((contrib, idx) => {
-                      return <li key={idx}>{contrib}</li>;
+                      return (
+                        <ContribList key={idx}>
+                          {contrib.title && <p className="contrib__topList">{contrib.title}</p>}
+                          <>
+                            {contrib.details &&
+                              contrib.details.map((detail, subIdx) => (
+                                <>
+                                  {typeof detail === 'string' ? (
+                                    <li className="bottom__list">
+                                      <Markdown key={subIdx}>{detail}</Markdown>
+                                    </li>
+                                  ) : (
+                                    <li className="bottom__list">
+                                      <p key={subIdx}>{detail.subDetail}</p>
+                                      <ul>
+                                        {detail.subDesc.map((desc, subIdx) => (
+                                          <li>
+                                            <Markdown key={subIdx}>{desc}</Markdown>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </li>
+                                  )}
+                                </>
+                              ))}
+                          </>
+                        </ContribList>
+                      );
                     })}
-                  </ContribList>
+                  </ContribListWrap>
                 </ProjectDetailBox>
 
-                <ProjectDetailBox title="구현 화면">
-                  <ScreenList>
+                <ProjectDetailBox title="screen">
+                  <ScreenListWrap>
                     {detail.screen.map((screen, idx) => {
                       return (
                         <li key={idx}>
@@ -79,8 +109,37 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                         </li>
                       );
                     })}
-                  </ScreenList>
+                  </ScreenListWrap>
                 </ProjectDetailBox>
+                {detail.troubleShooting && (
+                  <ProjectDetailBox title="Trouble Shooting">
+                    <TroubleShooting>
+                      {detail.troubleShooting.map((trouble) => {
+                        return (
+                          <>
+                            <p>{trouble.title}</p>
+                            <TroubleDetail>
+                              {trouble.details?.map((detail) => {
+                                return (
+                                  <li>
+                                    <p>{detail.label}</p>
+                                    <Markdown>{detail.desc}</Markdown>
+                                  </li>
+                                );
+                              })}
+                            </TroubleDetail>
+                            {trouble.referencesCode?.map((ref, idx) => {
+                              return <Markdown key={idx}>{ref}</Markdown>;
+                            })}
+                            {trouble.referencesImg?.map((ref, idx) => {
+                              return <img key={idx} src={ref} alt="reference image" />;
+                            })}
+                          </>
+                        );
+                      })}
+                    </TroubleShooting>
+                  </ProjectDetailBox>
+                )}
               </Details>
             </ContentWrap>
           </ModalContainer>
@@ -92,6 +151,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
 };
 
 export default ProjectModal;
+
 const ModalContainer = styled.div`
   ${tw`  
   fixed
@@ -103,7 +163,7 @@ const ModalContainer = styled.div`
   py-10
   z-10
   max-lg:p-0
-  lg:px-44
+  lg:px-52
   `}
 `;
 const ContentWrap = styled.article<ThumbUrlProp>`
@@ -115,7 +175,6 @@ const ContentWrap = styled.article<ThumbUrlProp>`
     max-lg:px-[10%]
     lg:px-[15%]
     lg:py-20
-    // z-0
   `}
   &::before {
     ${tw`
@@ -125,7 +184,6 @@ const ContentWrap = styled.article<ThumbUrlProp>`
       h-[400px]
       top-0
       left-0
-      // z-
       opacity-20
     `}
     background-image:${({ thumbUrl }) =>
@@ -160,6 +218,7 @@ const ProjectInfo = styled.div`
   & > ul {
     ${tw`
         justify-center
+        
       `}
   }
 
@@ -188,28 +247,59 @@ const Overview = styled.p`
     `}
 `;
 
-const ContribList = styled.ul`
+const ContribListWrap = styled.ul`
   ${tw`
-      px-8
-      pt-8
+    flex
+    flex-col
+    gap-10
+    px-8
+    pt-8
   `}
+`;
 
-  & li {
+const ContribList = styled.li`
+  .bottom__list {
     ${tw`
       list-disc
-      leading-[2rem]
-      mb-6
+      leading-loose
+      whitespace-pre-line
+      // mb-2
+      ml-10
+      // mb-3
     `}
-
     &::marker {
       ${tw`
         text-[#6c92af]
       `}
     }
+
+    ul li {
+      ${tw`
+        list-[circle]
+        mx-7
+      `}
+
+      &::marker {
+        ${tw`
+          text-[#ffffff]
+        `}
+      }
+    }
+  }
+  .contrib__topList {
+    ${tw`
+      border-solid
+      border-l-[5px]
+      border-point
+      pl-2
+      // py-1
+      mb-4
+      w-fit
+    `}
   }
 `;
 
-const ScreenList = styled.ul`
+const ScreenListWrap = styled.ul`
   ${tw`
     flex
     flex-wrap
@@ -272,6 +362,7 @@ const ModalBackground = styled.div`
       left-0
       w-full
       h-full
+      overflow-y-hidden
       backdrop-blur-[4px]
       bg-[#000000ac]
     `}
@@ -281,4 +372,57 @@ const ProjectLinks = styled.div`
     flex
     gap-5
   `}
+`;
+const TroubleShooting = styled.div`
+  ${tw` 
+    whitespace-pre-line
+    leading-loose
+    px-8
+    pt-8
+  `}
+  & > p {
+    ${tw` 
+    mb-4
+    text-[1.1rem]
+    font-bold
+    text-point
+  `}
+  }
+`;
+
+const TroubleDetail = styled.ul`
+  ${tw` 
+      flex
+    flex-col
+    gap-6
+    // bg-gray50
+    // px-4
+
+  `}
+
+  & li {
+    ${tw`
+      list-disc
+      ml-4
+    `}
+
+    &::marker {
+      ${tw`
+        text-[#6c92af]
+      `}
+    }
+
+    & > p {
+      ${tw` 
+    font-bold
+  `}
+    }
+
+    & div p {
+      ${tw` 
+    // bg-gray50
+    pl-2
+  `}
+    }
+  }
 `;
