@@ -124,6 +124,30 @@ export const useGsapHeadLineReveal = (items: RefObject<HTMLElement[]>, delay: nu
     );
   }, []);
 };
+export const useGsapProfileImg = (item: RefObject<SVGSVGElement>) => {
+  useGSAP(() => {
+    gsap.fromTo(
+      item.current,
+      {
+        autoAlpha: 0,
+        x: '-30%',
+      },
+      {
+        autoAlpha: 1,
+        // width: '100%',
+        x: 0,
+        duration: 1,
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+          trigger: item.current,
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'play none play reverse',
+        },
+      }
+    );
+  }, []);
+};
 
 export const useGsapAboutReveal = (items: RefObject<HTMLElement[]>, delay: number = 0) => {
   // ScrollTrigger.refresh();

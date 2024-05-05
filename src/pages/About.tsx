@@ -3,7 +3,6 @@ import { Section as AboutSection } from '../styles/CommonStyle';
 import SectionTitle from '../components/common/SectionTitle';
 import { useGsapAboutCirclePath, useGsapAboutReveal } from '../hooks/useGsap';
 import useArrayRef from '../hooks/useArrayRef';
-// import { useRef } from 'react';
 import ProfileImg from '../components/about/ProfileImg';
 import TechList from '../components/about/TechList';
 import Line from '/public/image/svg/path.svg?react';

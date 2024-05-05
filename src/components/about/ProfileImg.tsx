@@ -1,70 +1,14 @@
-import { RefObject, useEffect, useRef } from 'react';
-import gsap, { Expo } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { RefObject, useRef } from 'react';
+import { useGsapProfileImg } from '../../hooks/useGsap';
 
 const ProfileImg = () => {
-  const galleryImg: RefObject<SVGSVGElement> = useRef<SVGSVGElement>(null);
+  const profileImgRef: RefObject<SVGSVGElement> = useRef<SVGSVGElement>(null);
 
-  const useGsapProfileImg = (item: RefObject<SVGSVGElement>) => {
-    useEffect(() => {
-      gsap.fromTo(
-        item.current,
-        {
-          autoAlpha: 0,
-          x: '-30%',
-        },
-        {
-          autoAlpha: 1,
-          // width: '100%',
-          x: 0,
-          duration: 1,
-          ease: Expo.easeInOut,
-          scrollTrigger: {
-            trigger: item.current,
-            start: 'top center',
-            end: 'bottom center',
-            toggleActions: 'play none play reverse',
-          },
-        }
-      );
-    }, []);
-  };
-
-  // const useGsapGalleryTitle = (item: RefObject<HTMLHeadingElement>, trig: RefObject<SVGSVGElement>) => {
-  //   useEffect(() => {
-  //     const el = item.current;
-
-  //     gsap.fromTo(
-  //       el,
-  //       {
-  //         // x: 0,
-  //         autoAlpha: 0,
-  //       },
-  //       {
-  //         autoAlpha: 1,
-  //         x: '30%',
-  //         duration: 1,
-  //         ease: Expo.easeInOut,
-  //         scrollTrigger: {
-  //           trigger: trig.current,
-  //           start: 'top center',
-  //           // markers: true,
-  //           end: 'bottom center',
-  //           toggleActions: 'play none play none',
-  //         },
-  //       }
-  //     );
-  //   }, []);
-  // };
-
-  useGsapProfileImg(galleryImg);
-  // useGsapGalleryTitle(galleryTitle, galleryImg);
+  useGsapProfileImg(profileImgRef);
 
   return (
     <svg
-      ref={galleryImg}
+      ref={profileImgRef}
       width="100%"
       height="100%"
       viewBox="0 0 720 660"

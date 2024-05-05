@@ -52,14 +52,16 @@ const HomeContent = styled.div`
 const HeadLine = styled.div`
   ${tw`
     overflow-hidden
-    h-[6rem]
-    sm:h-[9rem]
+    h-[5rem]
+    sm:h-[7rem]
+    lg:h-[9rem]
   `}
 
   & > h1 {
     ${tw`
       text-[4rem]
-      sm:text-[8rem]
+      sm:text-[6rem]
+      lg:text-[8rem]
     `}
   }
   .HeadLine-one {

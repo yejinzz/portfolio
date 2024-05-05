@@ -132,7 +132,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                               return <Markdown key={idx}>{ref}</Markdown>;
                             })}
                             {trouble.referencesImg?.map((ref, idx) => {
-                              return <img key={idx} src={ref} alt="reference image" />;
+                              return <img key={idx} src={ref} alt="reference image" loading="lazy" />;
                             })}
                           </>
                         );
