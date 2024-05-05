@@ -7,7 +7,7 @@ import tw from 'twin.macro';
 const Social = () => {
   const SocialRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
-  useGsapSocialReveal(SocialRef);
+  useGsapSocialReveal(SocialRef, 6);
 
   return (
     <SocialContainer ref={SocialRef}>

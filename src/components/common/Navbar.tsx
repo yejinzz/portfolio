@@ -6,7 +6,7 @@ import { TabsProps } from '../../types/types';
 
 const Navbar = ({ tabs }: { tabs: TabsProps[] }) => {
   const [navRef, setNavRef] = useArrayRef<HTMLLIElement>();
-  useGsapNavReveal(navRef);
+  useGsapNavReveal(navRef, 6);
 
   return (
     <NavBar>
