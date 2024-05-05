@@ -8,7 +8,7 @@ export const myInfo = [
   { name: 'Email', link: 'mailto:yejin7707@gmail.com', icon: <EmailIcon /> },
 ];
 
-// export const socialLinks = [
-//   { href: link.velog, label: 'velog' },
-//   { href: link.github, label: 'github' },
-// ];
+export const socialLinks = [
+  { href: 'https://velog.io/@yejin1320', name: 'Velog' },
+  { href: 'https://github.com/yejinzz', name: 'Github' },
+];

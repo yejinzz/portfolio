@@ -25,7 +25,8 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
       })
       .to('body', {
         duration: 1,
-        css: { overflowY: 'scroll' },
+
+        css: { overflowY: 'auto' },
         ease: 'power3.inOut',
       })
       .to(
@@ -178,7 +179,7 @@ export const useGsapProjectReveal = (
   right: RefObject<HTMLElement>,
   trigger: RefObject<HTMLElement>
 ) => {
-  // ScrollTrigger.refresh();
+  ScrollTrigger.refresh();
 
   useGSAP(() => {
     const tlProject = gsap.timeline({
@@ -211,7 +212,7 @@ export const useGsapProjectReveal = (
 };
 
 export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
-  // ScrollTrigger.refresh();
+  ScrollTrigger.refresh();
   useGSAP(() => {
     gsap.fromTo(
       items.current,
@@ -235,7 +236,7 @@ export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
 };
 
 export const useGsapContact = (items: RefObject<HTMLElement[]>) => {
-  // ScrollTrigger.refresh();
+  ScrollTrigger.refresh();
   useGSAP(() => {
     gsap.fromTo(
       items.current,

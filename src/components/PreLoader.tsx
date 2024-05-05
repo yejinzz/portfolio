@@ -30,6 +30,7 @@ const PreLoaderContainer = styled.div`
     w-full
     bg-black
     fixed
+    // top-0
     flex
     items-center
     justify-center

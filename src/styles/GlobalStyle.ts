@@ -38,8 +38,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Pretendard','sans-serif';
     background-color:#222;
     color: #fff;
-    overflow-y: hidden;
-    
+    /* overflow-y: hidden; */
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', 'sans-serif';

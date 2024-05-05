@@ -3,16 +3,21 @@ import styled from 'styled-components';
 import { useGsapSocialReveal } from '../../hooks/useGsap';
 import tw from 'twin.macro';
 // { isInViewport }: { isInViewport: boolean }
+
 const Social = () => {
   const SocialRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
-  useGsapSocialReveal(SocialRef, 6);
+  useGsapSocialReveal(SocialRef);
 
   return (
     <SocialContainer ref={SocialRef}>
-      <span>Github</span>
+      <a href="https://github.com/yejinzz" target="_blank">
+        <span>Github</span>
+      </a>
       <div className="vertical-line" />
-      <span>Velog</span>
+      <a href="https://velog.io/@yejin1320" target="_blank">
+        <span>Velog</span>
+      </a>
     </SocialContainer>
   );
 };
@@ -30,6 +35,7 @@ const SocialContainer = styled.div`
   ml-6
   text-lg
   max-md:hidden
+  z-10
 `}
   transform-origin: left top;
   transform: rotate(-90deg) translateX(-50%);

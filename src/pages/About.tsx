@@ -34,7 +34,7 @@ const About = ({ tabs }: { tabs: TabsProps[] }) => {
                 “ 시작이 반이다. ”
                 <Line className="About__path" />
               </strong>
-              시작이 없으면 끝도 없듯이,늘 시작에 의미를 둡니다.
+              시작이 없으면 끝도 없듯이,늘 시작에 가치를 둡니다.
               <br />
               때문에 새로운 도전이나 배움에 두려움이 없고
               <br />
