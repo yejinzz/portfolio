@@ -6,16 +6,16 @@
   font-family: 'Pretendard';
   font-weight: normal;
   src:
-    url('/public/fonts/Pretendard-Light.woff2') format('woff2'),
-    url('/public/fonts/Pretendard-Light.woff') format('woff');
+    url('/public/fonts/Pretendard-Light.subset.woff2') format('woff2'),
+    url('/public/fonts/Pretendard-Light.subset.woff') format('woff');
   font-display: swap;
 }
 @font-face {
   font-family: 'Pretendard';
   font-weight: bold;
   src:
-    url('/public/fonts/Pretendard-Bold.woff2') format('woff2'),
-    url('/public/fonts/Pretendard-Bold.woff') format('woff');
+    url('/public/fonts/Pretendard-Bold.subset.woff2') format('woff2'),
+    url('/public/fonts/Pretendard-Bold.subset.woff') format('woff');
   font-display: swap;
 }
 
