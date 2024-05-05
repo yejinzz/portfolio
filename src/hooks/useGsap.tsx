@@ -26,8 +26,11 @@ export const useGsapPreLoader = (items: RefObject<HTMLSpanElement[]>) => {
       .to('body', {
         duration: 1,
 
-        css: { overflowY: 'auto' },
+        // css: { overflowY: 'auto' },
         ease: 'power3.inOut',
+        onComplete: () => {
+          document.body.style.overflowY = 'unset';
+        },
       })
       .to(
         '.preloader',

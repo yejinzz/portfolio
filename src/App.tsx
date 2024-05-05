@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
-// import PreLoader from './components/PreLoader';
+import PreLoader from './components/PreLoader';
 import Navbar from './components/common/Navbar';
 import Social from './components/common/Social';
 import Home from './pages/Home';
@@ -9,6 +9,7 @@ import Project from './pages/Project';
 import Education from './pages/Education';
 import Contact from './pages/Contact';
 import useMoveScroll from './hooks/useMoveScroll';
+import { useEffect } from 'react';
 
 const Noise = styled.div`
   ${tw`
@@ -32,10 +33,14 @@ const App = () => {
     useMoveScroll('Contact'),
   ];
 
+  useEffect(() => {
+    document.body.style.overflowY = 'hidden';
+  }, []);
+
   return (
     <main>
       <Noise />
-      {/* <PreLoader /> */}
+      <PreLoader />
       <Navbar tabs={tabs} />
       <Social />
       <Home tabs={tabs} />
