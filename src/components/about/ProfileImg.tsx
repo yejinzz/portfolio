@@ -25,7 +25,7 @@ const ProfileImg = () => {
 
       <rect width="100%" height="100%" fill="#3c5467" clipPath="url(#clip)" />
 
-      <image x="-8%" y="4%" width="120%" height="110%" xlinkHref="/image/profile_img.png" clipPath="url(#clip)" />
+      <image x="-8%" y="4%" width="120%" height="110%" xlinkHref="/image/profile_img.webp" clipPath="url(#clip)" />
     </svg>
   );
 };
