@@ -68,7 +68,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                       return (
                         <ContribList key={idx}>
                           {contrib.title && <p className="contrib__topList">{contrib.title}</p>}
-                          <>
+                          <div className="bottom__list_container">
                             {contrib.details &&
                               contrib.details.map((detail, subIdx) => (
                                 <>
@@ -90,7 +90,7 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                                   )}
                                 </>
                               ))}
-                          </>
+                          </div>
                         </ContribList>
                       );
                     })}
@@ -128,12 +128,14 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                                 );
                               })}
                             </TroubleDetail>
-                            {trouble.referencesCode?.map((ref, idx) => {
-                              return <Markdown key={idx}>{ref}</Markdown>;
-                            })}
-                            {trouble.referencesImg?.map((ref, idx) => {
-                              return <img key={idx} src={ref} alt="reference image" loading="lazy" />;
-                            })}
+                            <TroubleReference>
+                              {trouble.referencesCode?.map((ref, idx) => {
+                                return <Markdown key={idx}>{ref}</Markdown>;
+                              })}
+                              {trouble.referencesImg?.map((ref, idx) => {
+                                return <img key={idx} src={ref} alt="reference image" loading="lazy" />;
+                              })}
+                            </TroubleReference>
                           </>
                         );
                       })}
@@ -258,25 +260,34 @@ const ContribListWrap = styled.ul`
 `;
 
 const ContribList = styled.li`
+  .bottom__list_container {
+    ${tw`
+      py-3
+      mx-5
+      // bg-[#363636]
+      // rounded-[5px]
+    `}
+  }
+
   .bottom__list {
     ${tw`
       list-disc
       leading-loose
       whitespace-pre-line
-      // mb-2
-      ml-10
-      // mb-3
+      ml-5
+      
     `}
+
     &::marker {
       ${tw`
-        text-[#6c92af]
+        text-point
       `}
     }
 
     ul li {
       ${tw`
         list-[circle]
-        mx-7
+        mx-5
       `}
 
       &::marker {
@@ -289,11 +300,11 @@ const ContribList = styled.li`
   .contrib__topList {
     ${tw`
       border-solid
-      border-l-[5px]
+      border-l-[4px]
       border-point
       pl-2
-      // py-1
-      mb-4
+      py-1
+      font-bold
       w-fit
     `}
   }
@@ -392,12 +403,9 @@ const TroubleShooting = styled.div`
 
 const TroubleDetail = styled.ul`
   ${tw` 
-      flex
+    flex
     flex-col
     gap-6
-    // bg-gray50
-    // px-4
-
   `}
 
   & li {
@@ -414,15 +422,17 @@ const TroubleDetail = styled.ul`
 
     & > p {
       ${tw` 
-    font-bold
-  `}
-    }
-
-    & div p {
-      ${tw` 
-    // bg-gray50
-    pl-2
-  `}
+        font-bold
+      `}
     }
   }
+`;
+
+const TroubleReference = styled.div`
+  ${tw` 
+    m-5
+    flex
+    flex-col
+    gap-5
+  `}
 `;

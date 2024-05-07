@@ -10,6 +10,7 @@
     url('/public/fonts/Pretendard-Light.subset.woff') format('woff');
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Pretendard';
   font-weight: bold;

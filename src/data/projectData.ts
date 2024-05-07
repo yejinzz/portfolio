@@ -14,17 +14,42 @@ export const ProjectData: projectDataProps[] = [
     contribs: [
       {
         title: '회원가입, 로그인, 마이 페이지 기능 및 UI 담당.',
+        details: [
+          `사용자 유형별 회원가입 구현.`,
+          {
+            subDetail: `사용자 유형별 마이페이지 제공.`,
+            subDesc: [
+              `일반 사용자: 프로필 수정 및 나의 펀딩 내역, 나의 주문 내역 제공.`,
+              `업사이클러: 프로필 수정 및 기본 제공 내역을 포함한 나의 펀딩 등록 내역, 나의 스토어 등록 내역 제공.`,
+            ],
+          },
+        ],
+      },
+      {
+        title: '재사용 가능한 Image Upload 및 Preview 구현',
+        details: [
+          `input type="file” button 커스텀.`,
+          `\`FileReader API\`를 활용한 이미지 Preview 구현.`,
+          `\`FormData API\`를 사용한 이미지 데이터 전송.`,
+        ],
       },
       {
         title: '효율적인 form을 제어를 위한 custom hooks 개발',
         details: [
-          `initialValue을 인자로 받아 Input State를 관리하는 \`useInputs\` hook 개발.`,
-          `Form별 유효성 검사 로직을 모듈화 하여 특정 필드에 대한 유효성 검사 및 오류 메세지 처리하는 \`useErrHandler\` hook 개발.`,
+          `initialValue을 인자로 받아 Input State를 관리하는 \`useInputs\` 개발.`,
+          `Form별 유효성 검사 로직을 모듈화 하여 특정 필드에 대한 유효성 검사 및 오류 메세지 처리하는 \`useErrHandler\` 개발.`,
         ],
       },
+
       {
         title: '성능 최적화',
-        details: [`React Lazy, Suspese를 통한 코드 스플리팅, webp 이미지 변환을 통해 초기 로딩 속도 개선.`],
+
+        details: [
+          {
+            subDetail: `React Lazy, Suspese를 통한 코드 스플리팅, 이미지 최적화 등 작업 수행. `,
+            subDesc: [`Lighthouse Performance 점수 \`64점 → 97점\``],
+          },
+        ],
       },
       {
         title: '사용자 경험 개선',
@@ -33,7 +58,6 @@ export const ProjectData: projectDataProps[] = [
             subDetail: `반응형 웹 구현`,
             subDesc: [
               `프로젝트 전반적인 반응형 웹을 구현`,
-              `메인페이지 배너에 적용한 가로 스크롤 효과가 모바일 사용자에게 불편함을 초래한다는 피드백 수용.`,
               `\`Swiper.js\` 라이브러리를 활용하여 모바일 화면의 메인 배너 스와이프 구현.`,
             ],
           },
@@ -164,7 +188,7 @@ export const ProjectData: projectDataProps[] = [
         title: '스크롤 이동 메뉴 구현',
         details: [
           {
-            subDetail: `useRef를 활용한  useMoveScroll 훅 구현.`,
+            subDetail: `useRef를 활용한 useMoveScroll Custom Hook 구현.`,
             subDesc: [`특정 DOM 요소로 이동.`, `스크롤 위치를 감지하여 DOM에 해당하는 탭 메뉴 활성화.`],
           },
         ],
@@ -191,8 +215,8 @@ export const ProjectData: projectDataProps[] = [
       {
         title: 'Tailwind CSS + Styled-Components 적용',
         details: [
-          `Tailwind CSS의 단점 보안을 위해 Styled-Components를 함께 사용 \`twin.macro\``,
-          `Tailwind CSS를 도입하여 모바일 우선 접근 방식으로 반응형 작업이 용이하였고, 빠른 스타일링이 가능해짐.`,
+          `Tailwind CSS의 단점 보완을 위해 Styled-Components를 함께 사용 \`twin.macro\``,
+          `Tailwind CSS를 도입하여 모바일 우선 접근 방식으로 반응형 작업.`,
         ],
       },
     ],
@@ -206,7 +230,7 @@ export const ProjectData: projectDataProps[] = [
           },
           {
             label: `원인`,
-            desc: `\`React Profiler\`를 활용하여 컴포넌트 렌더링 성능 측정 결과, 모달 상태가 변경됨에 따라 모든 하위 컴포넌트가 리렌더링되는것이 원인이었습니다. 이로 인해 useArrayRef 훅이 계속 호출되고 있었던 것이 원인이었습니다.`,
+            desc: `React Profiler를 활용하여 컴포넌트 렌더링 성능 측정한 결과, 모달 상태가 변경됨에 따라 모든 하위 컴포넌트가 리렌더링되어 useArrayRef 훅이 계속 호출되고 있었던 것이 원인이었습니다.`,
           },
           {
             label: `해결`,
@@ -248,22 +272,27 @@ export const ProjectData: projectDataProps[] = [
         title: `여행 일정 생성 및 관리 기능 및 UI 구현`,
         details: [
           `여행지 별 장소 검색 기능`,
-          `일자별 일정 추가 및 편집 기능`,
-          `지도상 \`마커 강조\` 및 장소 정보 \`Overlay\` 제공`,
-          `\`Polyline\`을 통한 일자별 여행 경로 표시 기능`,
+          `일자별 일정 추가 기능`,
+          `\`react-beautiful-dnd\`를 이용한 일정 편집 DND 기능`,
+          `지도상 마커 강조 및 장소 정보 Overlay`,
+          `Polyline을 통한 일자별 여행 경로 표시 기능`,
         ],
+      },
+      {
+        title: 'React-hook-form 도입',
+        details: [`\`React-hook-form\`을 사용하여 유효성 검사와 더불어 복잡한 입력 폼을 단순하게 관리.`],
       },
       {
         title: 'JWT 기반 인증 구현',
         details: [
           `\`Axios Interceptor\`을 활용한 인증 Token 관리`,
-          `Access Token 만료시 Refresh Token을 활용하여 \`자동 로그인 / 로그아웃\` 구현`,
+          `Access Token 만료시 Refresh Token을 활용하여 자동 로그인 / 로그아웃 구현`,
           `서버단 Access Token 유효성 검사 미들웨어 구현`,
         ],
       },
       {
         title: 'Node JS 기반 서버 구축',
-        details: [`\`mongoDB\`, \`mongoose\`를 이용한 데이터베이스 관리`, `\`RESTful API\` 설계`],
+        details: [`mongoDB, mongoose를 이용한 데이터베이스 관리`, `RESTful API 설계`],
       },
     ],
     troubleShooting: [
@@ -293,65 +322,9 @@ export const ProjectData: projectDataProps[] = [
       { imgUrl: '/image/project/triP/main.webp', screenDesc: '메인 페이지' },
       { imgUrl: '/image/project/triP/login.webp', screenDesc: '로그인 페이지' },
       { imgUrl: '/image/project/triP/signup.webp', screenDesc: '회원가입 페이지' },
-      { imgUrl: '/image/project/triP/planPage.webp', screenDesc: '펀딩 페이지' },
+      { imgUrl: '/image/project/triP/planPage.webp', screenDesc: '일정 페이지' },
       { imgUrl: '/image/project/triP/myPage.webp', screenDesc: '마이 페이지' },
       { imgUrl: '/image/project/triP/editProfile.webp', screenDesc: '마이 페이지 - 프로필 수정' },
-    ],
-  },
-  {
-    id: 4,
-    thumbImg: '/image/project/stackoverfrow/StackoverFlow.webp',
-    link: {
-      deploy: 'http://district11.s3-website.ap-northeast-2.amazonaws.com/',
-      github: 'https://github.com/yejinzz/stackoverflow',
-    },
-    title: 'Stack Overflow',
-    subTitle: '스택오버플로우 클론 코딩 프로젝트',
-    period: '2023.06.09 - 2023.06.27',
-    stack: ['React', 'Recoil', 'CSS-Module', 'Axios'],
-    overview:
-      '개발자 커뮤니티 플랫폼 ‘Stack Overflow’ 클론 코딩 프로젝트 입니다. 첫 팀 프로젝트 경험으로, 짧은 스프린트내에 구현 가능한 수준을 설정 후 진행하였습니다.',
-    team: '팀 프로젝트',
-    contribs: [
-      {
-        title: `Axios instance 기능을 활용한 API 모듈화`,
-        details: [
-          `편리한 네트워크 작업과 코드 중복을 방지하기 위해 Axios instance를 생성 후 모든 네트워크 요청을 모듈화.`,
-        ],
-      },
-      {
-        title: `Stack Exchange API를 활용한 Tag 데이터 바인딩`,
-        details: [`Tag 페이지의 완성도를 위해 Stack Exchange API를 활용하여 Tag 표시`],
-      },
-      {
-        title: `전체 코드 리팩토링 및 시멘틱 마크업을 고려하여 구조 개선.`,
-        details: [
-          `리팩토링 진행 중 div가 무분별하게 사용되고 있는 코드들을 확인.`,
-          `ul, li, nav, aside, section 등 요소의 역할에 맞도록 태그 변경.`,
-        ],
-      },
-      {
-        details: [
-          `로그인 / 회원가입 기능 및 유저 데이터 전역 관리`,
-          `질문 생성 및 수정 기능 구현`,
-
-          `Stack Exchange API를 활용한 Tag 데이터 바인딩`,
-          `Axios instance 기능을 활용한 API 모듈화`,
-          `전체 코드 리팩토링 및 시멘틱 마크업을 고려하여 구조 개선.`,
-        ],
-      },
-    ],
-    screen: [
-      { imgUrl: '/image/project/stackoverfrow/main.webp', screenDesc: '메인(전체 질문 조회) 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/login.webp', screenDesc: '로그인 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/signup.webp', screenDesc: '회원가입 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/quesDetail.webp', screenDesc: '질문 상세 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/createQues.webp', screenDesc: '질문 생성 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/editQues.webp', screenDesc: '질문 수정 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/allUsers.webp', screenDesc: '유저 조회 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/tags.webp', screenDesc: '태그 조회 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/user.webp', screenDesc: '유저 상세 페이지' },
-      { imgUrl: '/image/project/stackoverfrow/editUser.webp', screenDesc: '유저 프로필 수정 페이지' },
     ],
   },
 ];
