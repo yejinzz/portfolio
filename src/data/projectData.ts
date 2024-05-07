@@ -83,7 +83,7 @@ export const ProjectData: projectDataProps[] = [
         details: [
           {
             label: `문제 발생`,
-            desc: `마이페이지 상세 내역 데이터를 바인딩하는 과정에서 Redux Store 상태에 직렬화할 수 없는 값이 포함되어 있다는 에러가 발생하였습니다.`,
+            desc: `마이페이지 상세 내역 데이터를 바인딩하는 과정에서 기능 동작에 문제가 없음에도 Redux Store 상태에 직렬화할 수 없는 값이 포함되어 있다는 에러가 발생하였습니다.`,
           },
           {
             label: `원인`,
@@ -95,7 +95,7 @@ export const ProjectData: projectDataProps[] = [
           },
           {
             label: `결과`,
-            desc: `실제 에러와 관계없이 기능 동작에는 문제가 없었지만,  안정성을 위해 직렬화 불가능한 값 저장은 지양해야한다는 리덕스의 특징을 새롭게 이해할 수 있었습니다. 또한 상세 내역 데이터 가공이 커스텀 훅 내에서 이루어도록 하여 복잡한 구조를 개선할 수 있었습니다.`,
+            desc: `안정성을 위해 직렬화 불가능한 값 저장은 지양해야한다는 리덕스의 특징을 새롭게 이해할 수 있었습니다. 또한 상세 내역 데이터 가공이 커스텀 훅 내에서 이루어도록 하여 복잡한 구조를 개선할 수 있었습니다.`,
           },
         ],
         referencesCode: [
@@ -175,7 +175,7 @@ export const ProjectData: projectDataProps[] = [
     thumbImg: '/image/project/portfolio/Portfolio.webp',
     link: {
       deploy: 'https://yejin-portfolio.vercel.app/',
-      github: 'https://github.com/yejinzz/triP',
+      github: 'https://github.com/yejinzz/portfolio',
     },
     title: "Yejin's Portfolio",
     subTitle: '포트폴리오 웹사이트',
@@ -238,7 +238,7 @@ export const ProjectData: projectDataProps[] = [
           },
           {
             label: `결과`,
-            desc: `Project 컴포넌트의 렌더링 속도를 \`25.5ms에서 5.3ms\`까지 단축하였고, projectItem의 리렌더링을 막아 해당 문제를 해결할 수 있었습니다.`,
+            desc: `projectItem 컴포넌트의 리렌더링을 방지하여 해당 문제를 해결할 수 있었습니다. 미미한 차이지만 렌더링 속도를 \`5.6ms\` 단축하였으며, useCallback hook과 react.memo을 적절한 상황에서 활용하는 방법을 이해했습니다.`,
           },
         ],
         referencesImg: [`/image/project/portfolio/reference1.webp`, `/image/project/portfolio/reference2.webp`],
@@ -313,7 +313,7 @@ export const ProjectData: projectDataProps[] = [
           },
           {
             label: `결과`,
-            desc: `Axios 인터셉터를 활용하여 인증 토큰을 관리가 용이해졌으며, 불필요한 토큰 재발급 문제를 해결할 수 있었습니다.`,
+            desc: `Axios interceptors를 활용함으로써 인증 토큰을 관리가 용이해졌으며, 불필요한 토큰 재발급 문제를 해결할 수 있었습니다. 또한 구글링 과정에서 새롭게 알게 된 사실은 리액트 환경에서는 기본적으로 XSS 공격이 방지된다는 점이었습니다. Access Token을 Web Storage에 저장했을 때 XSS 공격에 취약하다고 알고 있어 메모리상에 저장하는 방식을 선택했었는데, 이 특징을 살려 토큰 저장 위치를 고려했다면 재발급 문제를 더욱 효율적으로 해결할 수 있지 않을까 고민해 보는 시간이 되었습니다.`,
           },
         ],
       },

@@ -12,7 +12,6 @@ const useMoveScroll = (targetName: string) => {
       if (targetRef.current) {
         const targetRect = targetRef.current.getBoundingClientRect();
 
-        console.log(targetRef.current.offsetTop - 180 < window.scrollY, targetRect.bottom - 180 > 0);
         if (targetRef.current.offsetTop - 180 < window.scrollY && targetRect.bottom - 180 > 0) {
           document.querySelector(`#${targetName}`)?.classList.add('active');
         } else {

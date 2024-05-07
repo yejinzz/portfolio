@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 import { projectDataProps } from '../../types/types';
 import { useGsapProjectReveal } from '../../hooks/useGsap';
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { RefObject, memo, useCallback, useRef } from 'react';
 import MoreViewBtn from './button/MoreViewBtn';
 import StackList from '../common/StackList';
 import tw from 'twin.macro';
-import ProjectModal from './modal/ProjectModal';
-import { ProjectData } from '../../data/projectData';
 
-const ProjectItem = ({ data }: { data: projectDataProps }) => {
-  const [projectId, setProjectId] = useState<number>(0);
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+interface Props {
+  data: projectDataProps;
+  setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setProjectId: React.Dispatch<React.SetStateAction<number>>;
+}
 
+const ProjectItem = memo(({ data, setIsOpenModal, setProjectId }: Props) => {
   const projectRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectLeftRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const projectRightRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
@@ -26,21 +27,8 @@ const ProjectItem = ({ data }: { data: projectDataProps }) => {
     [setIsOpenModal, setProjectId]
   );
 
-  useEffect(() => {
-    if (isOpenModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isOpenModal]);
-
   return (
     <>
-      {isOpenModal &&
-        ProjectData.map((detail, idx) => {
-          return detail.id === projectId && <ProjectModal key={idx} detail={detail} setIsOpenModal={setIsOpenModal} />;
-        })}
-
       <ProjectItemContainer ref={projectRef}>
         <div className="flex-1" ref={projectLeftRef}>
           <img src={data.thumbImg} alt={data.title} loading="lazy" />
@@ -56,7 +44,7 @@ const ProjectItem = ({ data }: { data: projectDataProps }) => {
       </ProjectItemContainer>
     </>
   );
-};
+});
 
 export default ProjectItem;
 
