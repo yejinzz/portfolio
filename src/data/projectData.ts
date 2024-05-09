@@ -230,15 +230,15 @@ export const ProjectData: projectDataProps[] = [
           },
           {
             label: `원인`,
-            desc: `React Profiler를 활용하여 컴포넌트 렌더링 성능 측정한 결과, 모달 상태가 변경됨에 따라 모든 하위 컴포넌트가 리렌더링되어 useArrayRef 훅이 계속 호출되고 있었던 것이 원인이었습니다.`,
+            desc: `React Profiler를 활용하여 컴포넌트 렌더링 성능 측정한 결과, 모달 상태가 변경됨에 따라 모든 하위 컴포넌트가 리렌더링되는 것이 원인이었습니다. ProjectItem 컴포넌트가 리렌더링 되면서 useArrayRef 훅의 setElementRef 함수가 새롭게 생성되고 있었고, 이로 인해 ref가 배열안에 중복으로 추가되고 있었습니다.`,
           },
           {
             label: `해결`,
-            desc: `\`useCallback\` 훅과 \`react.memo\`를 사용하여 렌더링 최적화를 진행하였습니다. 메모이제이션 과정을 통해 불필요한 함수 생성을 방지하고, 상태가 변경되어도 하위 컴포넌트의 리렌더링이 발생하지 않도록 개선하였습니다.`,
+            desc: `setElementRef와 MoreViewBtn 컴포넌트로 전달되는 상태 업데이트 함수에 \`useCallback\`을 적용하여 불필요한 함수 생성을 방지해 주었으며, \`React.memo\`를 사용해 ProjectItem 컴포넌트를 메모이제이션하여 상태가 변경되어도 리렌더링이 발생하지 않도록 개선하였습니다.`,
           },
           {
             label: `결과`,
-            desc: `projectItem 컴포넌트의 리렌더링을 방지하여 해당 문제를 해결할 수 있었습니다. 미미한 차이지만 렌더링 속도를 \`5.6ms\` 단축하였으며, useCallback hook과 react.memo을 적절한 상황에서 활용하는 방법을 이해했습니다.`,
+            desc: `useCallback과 react.memo으로 함수와 컴포넌트를 메모이제이션하여 해당 문제를 해결할 수 있었습니다. 미미한 차이지만 렌더링 속도를 \`5.6ms\` 단축하였으며, 적절한 상황에서 useCallback과 react.memo을 활용하는 방법을 이해했습니다.`,
           },
         ],
         referencesImg: [`/image/project/portfolio/reference1.webp`, `/image/project/portfolio/reference2.webp`],
