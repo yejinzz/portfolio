@@ -35,6 +35,7 @@ export interface TabsProps {
   targetRef: React.RefObject<HTMLElement>;
   onMoveToTarget: () => void;
   targetName: string;
+
   // isTarget: boolean;
 }
 

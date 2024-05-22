@@ -5,20 +5,24 @@ import tw from 'twin.macro';
 import { TabsProps } from '../../types/types';
 
 const Navbar = ({ tabs }: { tabs: TabsProps[] }) => {
-  const [navRef, setNavRef] = useArrayRef<HTMLLIElement>();
+  const [navRef, setNavRef] = useArrayRef<HTMLButtonElement>();
   useGsapNavReveal(navRef, 6);
 
   return (
     <NavBar>
-      <ul>
-        {tabs.map((tab, index) => {
-          return (
-            <NavList id={tab.targetName} key={index} ref={setNavRef} onClick={tab.onMoveToTarget}>
-              {tab.targetName}
-            </NavList>
-          );
-        })}
-      </ul>
+      {tabs.map((tab, index) => {
+        return (
+          <button
+            aria-label={`${tab.targetName}탭으로 이동`}
+            className={`${tab.targetName}__menu`}
+            key={index}
+            onClick={tab.onMoveToTarget}
+            ref={setNavRef}
+          >
+            {tab.targetName}
+          </button>
+        );
+      })}
     </NavBar>
   );
 };
@@ -29,17 +33,7 @@ const NavBar = styled.nav`
   ${tw`
     fixed
     right-0
-    // right-1/2
-    // translate-x-1/2
-    z-1
-    // sm:right-0
-    // sm:translate-x-0
-    
-`}
-  /* transform: translate(0%, 0%); */
-  ul {
-    ${tw`
-
+    z-10
     flex
     items-center
     px-2
@@ -50,12 +44,14 @@ const NavBar = styled.nav`
     md:px-6
     md:text-base
   `}
-  }
-`;
 
-const NavList = styled.li`
-  ${tw`
+  & > button {
+    ${tw`
     cursor-pointer
     text-gray
-  `}
+    `}
+  }
+  .active {
+    color: #fff;
+  }
 `;

@@ -18,7 +18,7 @@ const About = ({ tabs }: { tabs: TabsProps[] }) => {
   useGsapAboutCirclePath();
 
   return (
-    <AboutSection className="about" ref={tabs[1].targetRef}>
+    <AboutSection id="about" ref={tabs[1].targetRef}>
       <SectionTitle>About</SectionTitle>
 
       <AboutWrapper>

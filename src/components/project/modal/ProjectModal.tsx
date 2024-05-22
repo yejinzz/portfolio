@@ -30,13 +30,13 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
             <ModalBackground onClick={closeModal} />
 
             <ContentWrap thumbUrl={detail.thumbImg}>
-              <button className="close_button" onClick={closeModal}>
+              <button className="close_button" onClick={closeModal} aria-label="닫기">
                 <CloseIcon />
               </button>
 
               <div>
                 <ThumbContainer>
-                  <img src={detail.thumbImg} alt={`${detail.thumbImg} 대표 이미지`} />
+                  <img src={detail.thumbImg} alt={`${detail.title} 대표 이미지`} />
                 </ThumbContainer>
                 <ProjectInfo>
                   <h1>{detail.title}</h1>
@@ -46,10 +46,10 @@ const ProjectModal = ({ detail, setIsOpenModal }: ProjectModalProps) => {
                   <StackList stackData={detail.stack} />
 
                   <ProjectLinks>
-                    <LinkButton link={detail.link.github}>
+                    <LinkButton link={detail.link.github} label="깃허브">
                       <GithubIcon />
                     </LinkButton>
-                    <LinkButton link={detail.link.deploy}>
+                    <LinkButton link={detail.link.deploy} label="배포사이트">
                       <LinkIcon />
                     </LinkButton>
                   </ProjectLinks>

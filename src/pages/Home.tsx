@@ -14,7 +14,7 @@ const Home = ({ tabs }: { tabs: TabsProps[] }) => {
   useGsapHeadLineReveal(headLineRef);
   // console.log(tabs[0].isTarget);
   return (
-    <HomeSection ref={tabs[0].targetRef}>
+    <HomeSection id="home" ref={tabs[0].targetRef}>
       <HomeContent>
         <TextCircle>FRONT-END DEVELOPER </TextCircle>
         <HeadLine>

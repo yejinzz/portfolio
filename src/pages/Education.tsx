@@ -11,7 +11,7 @@ const Education = ({ tabs }: { tabs: TabsProps[] }) => {
   useGsapEducation(eductionRef);
 
   return (
-    <EducationSection className="eduction" ref={tabs[3].targetRef}>
+    <EducationSection id="education" ref={tabs[3].targetRef}>
       <SectionTitle>Education</SectionTitle>
       <EducationContainer>
         <EducationItem ref={setEducationRef}>

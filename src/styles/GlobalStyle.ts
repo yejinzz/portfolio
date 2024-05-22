@@ -29,11 +29,6 @@ const GlobalStyle = createGlobalStyle`
   a, img{
     display: block;
   }
-  button{
-    outline: none;
-    appearance: none;
-    border: none;
-  }
   body{
     font-family: 'Pretendard','sans-serif';
     background-color:#222;
@@ -45,9 +40,6 @@ const GlobalStyle = createGlobalStyle`
     font-weight:900;
   }
 
-.active{
-  color:#fff;
-}
 `;
 
 export default GlobalStyle;

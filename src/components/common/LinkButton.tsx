@@ -5,16 +5,17 @@ import { ChildrenProps } from '../../types/types';
 interface LinkButtonProps extends ChildrenProps {
   link: string;
   name?: string | null;
+  label?: string;
 }
 
-const LinkButton = ({ children, link, name }: LinkButtonProps) => {
+const LinkButton = ({ children, link, name, label }: LinkButtonProps) => {
   return (
-    <a href={link} target="_blank">
-      <LinkBtn name={name}>
+    <LinkBtn name={name}>
+      <a href={link} target="_blank" aria-label={label}>
         {children}
-        {name && <p>{name}</p>}
-      </LinkBtn>
-    </a>
+      </a>
+      {name && <p>{name}</p>}
+    </LinkBtn>
   );
 };
 
@@ -26,7 +27,7 @@ const LinkBtn = styled.button<{ name?: string | null }>`
     items-center
   `}
 
-  & > svg {
+  a > svg {
     ${tw`
         w-[40px]
         h-[40px]

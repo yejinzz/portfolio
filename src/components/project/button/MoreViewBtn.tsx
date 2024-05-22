@@ -7,7 +7,11 @@ interface ProjectListItemProps {
 }
 
 const MoreViewBtn = ({ dataId, onClickMoreView }: ProjectListItemProps) => {
-  return <Button onClick={() => onClickMoreView(dataId)}>more view</Button>;
+  return (
+    <Button onClick={() => onClickMoreView(dataId)} aria-haspopup="true">
+      more view
+    </Button>
+  );
 };
 export default MoreViewBtn;
 

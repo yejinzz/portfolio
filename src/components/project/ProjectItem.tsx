@@ -31,7 +31,7 @@ const ProjectItem = memo(({ data, setIsOpenModal, setProjectId }: Props) => {
     <>
       <ProjectItemContainer ref={projectRef}>
         <div className="flex-1" ref={projectLeftRef}>
-          <img src={data.thumbImg} alt={data.title} loading="lazy" />
+          <img src={data.thumbImg} alt={`${data.title} 프로젝트 대표 이미지`} loading="lazy" />
         </div>
         <ProjectDescBox ref={projectRightRef}>
           <h2>{`0${data.id}`}</h2>

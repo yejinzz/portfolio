@@ -74,7 +74,7 @@ export const useGsapTitle = (items: RefObject<HTMLSpanElement[]>) => {
   }, []);
 };
 
-export const useGsapNavReveal = (items: RefObject<HTMLLIElement[]>, delay: number = 0) => {
+export const useGsapNavReveal = (items: RefObject<HTMLButtonElement[]>, delay: number = 0) => {
   useGSAP(() => {
     gsap.fromTo(
       items.current,
@@ -191,7 +191,7 @@ export const useGsapAboutCirclePath = () => {
         duration: 1.5,
         delay: 0.5,
         scrollTrigger: {
-          trigger: '.about',
+          trigger: '#about',
           start: 'top 10%',
           end: 'bottom bottom',
           toggleActions: 'restart none play none',
@@ -252,7 +252,7 @@ export const useGsapEducation = (items: RefObject<HTMLElement[]>) => {
         ease: 'power4.out',
         stagger: 0.4,
         scrollTrigger: {
-          trigger: '.eduction',
+          trigger: '#education',
           start: 'top center',
           end: 'bottom center',
           toggleActions: 'restart none none reverse',
@@ -275,7 +275,7 @@ export const useGsapContact = (items: RefObject<HTMLElement[]>) => {
         ease: 'power4.out',
         stagger: 0.6,
         scrollTrigger: {
-          trigger: '.contact',
+          trigger: '#contact',
           start: 'top center',
           end: 'bottom center',
           toggleActions: 'restart none none reverse',

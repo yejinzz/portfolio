@@ -27,7 +27,7 @@ const Project = ({ tabs }: { tabs: TabsProps[] }) => {
           return detail.id === projectId && <ProjectModal key={idx} detail={detail} setIsOpenModal={setIsOpenModal} />;
         })}
 
-      <ProjectSection ref={tabs[2].targetRef}>
+      <ProjectSection id="projects" ref={tabs[2].targetRef}>
         <SectionTitle>Projects</SectionTitle>
         <ProjectWrapper>
           {ProjectData.map((data, idx) => (

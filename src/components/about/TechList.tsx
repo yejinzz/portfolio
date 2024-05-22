@@ -12,12 +12,12 @@ const TechList = ({ setAboutRef }: { setAboutRef: SetRefType<HTMLDivElement> }) 
       <SubTitle>Tech Stack</SubTitle>
       <div className="Tech__list-container">
         {Object.entries(StackData.stacks).map(([key, stack], idx) => (
-          <div key={idx} className="Tech__list-wrap" aria-label={`${key} Tech list`}>
+          <div key={idx} className="Tech__list-wrap">
             <h3>{key}</h3>
 
             <ul>
               {stack.map((item, itemIdx) => (
-                <StackItem key={itemIdx} aria-label={`${item}`} stack={item}>
+                <StackItem key={itemIdx} stack={item}>
                   <img className="About__tech-icon" src={`/tech/${item}.svg`} alt={item} loading="lazy" />
                 </StackItem>
               ))}

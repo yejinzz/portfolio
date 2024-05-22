@@ -13,7 +13,7 @@ const Contact = ({ tabs }: { tabs: TabsProps[] }) => {
 
   useGsapContact(contactElRef);
   return (
-    <ContactSection className="contact" ref={tabs[4].targetRef}>
+    <ContactSection id="contact" ref={tabs[4].targetRef}>
       <TextAnimation setRef={setContactElRef}>Thank you!</TextAnimation>
 
       <ContactList ref={setContactElRef}>

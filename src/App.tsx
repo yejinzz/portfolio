@@ -26,11 +26,11 @@ const Noise = styled.div`
 `;
 const App = () => {
   const tabs = [
-    useMoveScroll('Home'),
-    useMoveScroll('About'),
-    useMoveScroll('Projects'),
-    useMoveScroll('Education'),
-    useMoveScroll('Contact'),
+    useMoveScroll('home'),
+    useMoveScroll('about'),
+    useMoveScroll('projects'),
+    useMoveScroll('education'),
+    useMoveScroll('contact'),
   ];
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const App = () => {
 
   return (
     <main>
+      {/* <SkipMenu /> */}
       <Noise />
       <PreLoader />
       <Navbar tabs={tabs} />
